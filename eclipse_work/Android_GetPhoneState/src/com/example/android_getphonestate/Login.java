@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class Login extends Activity implements OnClickListener
 {
-	Button btn1, btn2;
+	Button btn1, btn2, btn3;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
