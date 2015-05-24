@@ -17,7 +17,7 @@ public class showAttendence extends ListActivity{
 	String hap[];
 	@Override
 	public void onCreate(Bundle savedInstanceState)
-	{
+	{ 
 		super.onCreate(savedInstanceState);
 			
 		Intent getDataIntent = getIntent();
