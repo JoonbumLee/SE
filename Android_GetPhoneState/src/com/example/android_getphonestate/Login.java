@@ -29,8 +29,8 @@ import android.widget.Toast;
 public class Login extends Activity implements OnClickListener {
    Button btn1, btn2;
    EditText ID, PW;
-   private String id, pw, check = "false";
-
+   private String id, pw, check = "false",course_list ="";
+   
    @Override
    protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
@@ -80,17 +80,24 @@ public class Login extends Activity implements OnClickListener {
       protected void onPostExecute(Void result) {
          // TODO Auto-generated method stub
          super.onPostExecute(result);
-         Log.d("5", check);
+         
          check = check.trim();
+         Log.d("5", check);
          if (check.equalsIgnoreCase("true")) {
             if (id.startsWith("1"))
             {
+            	Bundle myBundle = new Bundle();
+            	myBundle.putString("course_list", course_list);
             	Intent myIntent= new Intent(Login.this , ProAttendenceMenu.class);
-                startActivity(myIntent);
+                myIntent.putExtras(myBundle);
+            	startActivity(myIntent);
             }
             else
             {
             	Intent myIntent= new Intent(Login.this , AttendenceMenu.class);
+            	Bundle myBundle = new Bundle();
+            	myBundle.putString("course_list", course_list);
+            	myIntent.putExtras(myBundle);
             	startActivity(myIntent);
             }
          }
@@ -140,12 +147,19 @@ public class Login extends Activity implements OnClickListener {
             HttpResponse res = client.execute(httpPost);
             check = EntityUtils.toString((res.getEntity()));
             Log.d("Reulst", check);
-            String[] split = check.split("/");
-
-            check = split[0];
-            id = split[1];
-            Log.d("check", check);
-            Log.d("id", id);
+            String[] split = check.split(" ");
+            if(split[0].trim().equalsIgnoreCase("true"))
+            {
+            	check =split[0];
+            	for(int j=1; j<split.length; j++)
+            	{
+            		course_list = course_list + split[j];
+            	}
+            }
+            else
+            	check = "false";
+            
+            
          } catch (ClientProtocolException e) {
             e.printStackTrace();
          } catch (IOException e) {
