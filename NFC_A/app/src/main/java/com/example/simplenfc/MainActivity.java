@@ -1,85 +1,101 @@
 package com.example.simplenfc;
 
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.util.Enumeration;
+
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
-import android.view.*;
-import android.view.View.*;
+import android.telephony.TelephonyManager;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.os.Build;
+import android.widget.TextView;
+import android.widget.Toast;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends Activity implements OnClickListener {
 
-	Button r, w;
-	
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+    Button btn1;
+    TextView tv1, tv2, tv3;
+    private static final String LOG_TAG = null;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        btn1 = (Button)findViewById(R.id.macBtn);
+        tv1 = (TextView)findViewById(R.id.macTv);
+        tv2 = (TextView)findViewById(R.id.ipTv);
+        tv3 =(TextView)findViewById(R.id.phoneTv);
 
-		if (savedInstanceState == null) {
-			getSupportFragmentManager().beginTransaction()
-					.add(R.id.container, new PlaceholderFragment()).commit();
-		}
-		
-		r = (Button)findViewById(R.id.readActivityButton);
-		w = (Button)findViewById(R.id.writeActivityButton);
-		
-		r.setOnClickListener(new OnClickListener(){
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent intent = new Intent(getBaseContext(), ReadActivity.class);
-				startActivity(intent);
-			}
-		});
-		
-		w.setOnClickListener(new OnClickListener(){
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(getBaseContext(), WriteActivity.class);
-				startActivity(intent);
-			}
-		});
-	}
+        btn1.setOnClickListener(this);
+    }
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
 
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
+    @Override
+    public void onClick(View v) {
+        if(v.getId() == btn1.getId())
+        {
+            getCurrentMacAddress();
+            getLocalIpAddress();
+            getLocalPhoneNumber();
+        }
+    }
 
-	/**
-	 * A placeholder fragment containing a simple view.
-	 */
-	public static class PlaceholderFragment extends Fragment {
+    public void getCurrentMacAddress(){
+        String macAddress="";
+        boolean bIsWifiOff=true;
 
-		public PlaceholderFragment() {
-		}
+        WifiManager wfManager = (WifiManager)getSystemService(Context.WIFI_SERVICE);
 
-		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_main, container,
-					false);
-			return rootView;
-		}
-	}
+        WifiInfo wfInfo = wfManager.getConnectionInfo();
+        macAddress = wfInfo.getMacAddress();
 
+        tv1.setText(macAddress+"");
+    }
+    public void getLocalIpAddress()
+    {
+        try {
+            for (Enumeration en = NetworkInterface.getNetworkInterfaces(); en.hasMoreElements();) {
+                NetworkInterface intf = (NetworkInterface)en.nextElement();
+                for (Enumeration enumIpAddr = intf.getInetAddresses(); enumIpAddr.hasMoreElements();) {
+                    InetAddress inetAddress = (InetAddress)enumIpAddr.nextElement();
+                    if (!inetAddress.isLoopbackAddress()) {
+                        tv2.setText(inetAddress.getHostAddress().toString());
+                    }
+                }
+            }
+        } catch (SocketException ex) {
+            Log.e(LOG_TAG, ex.toString());
+        }
+    }
+    public void getLocalPhoneNumber(){ //��ȭ��ȣ
+        TelephonyManager manager = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+        tv3.setText(manager.getLine1Number());
+    }
 }
