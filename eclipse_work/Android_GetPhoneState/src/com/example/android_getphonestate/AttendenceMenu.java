@@ -14,7 +14,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 public class AttendenceMenu extends ListActivity
-{
+{    
 	// 꼭 읽어주셔야 할 주의사항입니다.
 	// subjects에 첫번째, 즉 subjects[0]에는 반드시 '출석'이라는 글자가 들어가야 합니다.
 	// data 넣어주실때 꼭 생각해주시면 감사하겠습니다.

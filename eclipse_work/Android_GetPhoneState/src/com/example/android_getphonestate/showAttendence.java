@@ -11,7 +11,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 public class showAttendence extends ListActivity{
-
+    
 	String getDate[];
 	String getTemp1[];
 	String hap[];
