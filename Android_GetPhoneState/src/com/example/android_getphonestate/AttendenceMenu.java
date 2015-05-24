@@ -15,10 +15,7 @@ public class AttendenceMenu extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_attendencemenu);
-		btn1 = (Button)findViewById(R.id.attendBtn);
-		btn2 = (Button)findViewById(R.id.checkBtn);
-		btn1.setOnClickListener(this);
-		btn2.setOnClickListener(this);
+	
 	}
 
 	@Override
