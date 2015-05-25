@@ -29,7 +29,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d6bebb4-b116-47ac-b59c-2d0b59d5176c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/simplenfc/AttendenceMenu.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/simplenfc/AttendenceMenu.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SimpleNFC.iws" />
@@ -1919,7 +1918,11 @@
       <created>1432586838102</created>
       <updated>1432586838102</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Scan data and save for UI">
+      <created>1432597667292</created>
+      <updated>1432597667292</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -2004,7 +2007,8 @@
     <MESSAGE value="Changes in Locan by Joon" />
     <MESSAGE value="Changes in Local by Joon&#10;NFC" />
     <MESSAGE value="commit until scanned data" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit until scanned data" />
+    <MESSAGE value="Scan data and save for UI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Scan data and save for UI" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
