@@ -17,30 +17,50 @@ import org.apache.http.util.EntityUtils;
 
 import android.app.Fragment;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
 public class AttendanceMenuFragment extends Fragment {
+	ListView attendList ;
 	ArrayAdapter<String> adapter2;
 	int position = 0;
-	ListView attendList;
+	
 	TextView txt;
 	ArrayList<String> course_list;
 	ArrayList<String> myAttend;
 	String userID, attend = "";
+	LinearLayout activityList;
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		Log.d( getClass().getName(), " onCreateView() enterance ");
+		View v = inflater.inflate( R.layout.attendancemenufragment , container, false);
+		//getActivity().setVisible(View.GONE);
+		
+		return v;
+	}
+	
+	
 
 	@Override
 	public void onStart() {
 		// TODO Auto-generated method stub
-		super.onStart();
-		txt = (TextView) getActivity().findViewById(R.id.course);
-		attendList = (ListView) getActivity().findViewById(R.id.myAttendList);
+		//txt = (TextView) getActivity().findViewById(R.id.course);
 		
+		super.onStart();
 		position = ((AttendenceMenu) getActivity()).Position;
 		userID = ((AttendenceMenu) getActivity()).id;
 		myAttend = new ArrayList<String>();
+		
+		attendList = (ListView)getActivity().findViewById(R.id.myAttendList);
 		
 		course_list = new ArrayList<String>();
 		course_list = ((AttendenceMenu) getActivity()).courseList;
@@ -59,8 +79,7 @@ public class AttendanceMenuFragment extends Fragment {
 		// menulist = (ListView)findViewById(R.id.myList);
 		//txt.setText(course_list.get(position).toString());
 		new CheckAttend().execute();
-		adapter2 = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,myAttend);
-	    attendList.setAdapter(adapter2);
+		
 		
 	}
 
@@ -84,7 +103,20 @@ public class AttendanceMenuFragment extends Fragment {
 		protected void onPostExecute(Void result) {
 			// TODO Auto-generated method stub
 			super.onPostExecute(result);
+			for(String attend : myAttend)
+			{
+				Log.d("attend",attend);
+			}
 			
+			adapter2 = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,myAttend);
+			if(attendList ==null)
+				Log.d("list","null");
+			if(adapter2 == null)
+				Log.d("adapter2","null");
+				
+			activityList = (LinearLayout)getActivity().findViewById(R.id.Layout);
+			activityList.setVisibility(View.GONE);
+		    attendList.setAdapter(adapter2);
 			// Log.d("5", check);
 
 		}
@@ -124,8 +156,8 @@ public class AttendanceMenuFragment extends Fragment {
 					for (int j = 1; j < split.length; j++) {
 						Log.d("beforeSpilit",split[j]);
 						String[] attend = split[j].split("/");
-						Log.d("attend[0],attend[1]", attend[0] + " " + attend[1]);
-						myAttend.add(attend[0]+" "+attend[1]); 
+						Log.d("attend[0],attend[1]", "Date :" +attend[0] + " " + "point "+attend[1]);
+						myAttend.add("Date : " + attend[0].trim()+" "+"point : "+attend[1].trim()); 
 					}
 				} 
 				else
