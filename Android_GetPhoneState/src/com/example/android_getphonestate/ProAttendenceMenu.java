@@ -38,7 +38,7 @@ public class ProAttendenceMenu extends Activity implements AdapterView.OnItemCli
 		}
 		
 		adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,courseList);
-	    list = (ListView)findViewById(R.id.myList);
+	    list = (ListView)findViewById(R.id.ProList);
 	    list.setAdapter(adapter);
 	}
 
