@@ -15,20 +15,31 @@ public class ProAttendenceMenu extends Activity implements AdapterView.OnItemCli
 
 	Button btn1, btn2;
 	ArrayAdapter<String> adapter; 
-	ListView listView; 
+	ListView list;
+	ArrayList<String> courseList;
 	String select, select2;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_proattendencemenu);
 		// 실제로는 강의리스트를 Login 액티비티에서 전달 받아서 표현 해 줘야 함
-		ArrayList<String> courselist = new ArrayList<String>();
-		courselist.add("알고리즘");
-		courselist.add("소프트웨어공학");
-		adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,courselist);
-		listView = (ListView) findViewById(R.id.courselist);
-		listView.setAdapter(adapter);
-		listView.setOnItemClickListener(this);
+		Intent myIntent = getIntent();
+		Bundle myBundle = myIntent.getExtras();
+		String course = myBundle.getString("course_list");
+		String[] txt = course.split(" ");
+		courseList = new ArrayList<String>();
+		
+		for(int i = 0; i< txt.length; i++)
+		{
+			//Log.d("text",txt[i]);
+			if(!courseList.contains(txt[i]))
+				courseList.add(txt[i]);
+			//Log.d("courseList",courseList.get(i).toString());
+		}
+		
+		adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,courseList);
+	    list = (ListView)findViewById(R.id.myList);
+	    list.setAdapter(adapter);
 	}
 
 	@Override
