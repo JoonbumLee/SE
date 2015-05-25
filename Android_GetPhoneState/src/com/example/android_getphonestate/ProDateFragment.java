@@ -15,6 +15,8 @@ import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.util.EntityUtils;
 
+import com.example.android_getphonestate.ProMenuFragment.CheckAttend;
+
 import android.app.Fragment;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -22,63 +24,63 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.AdapterView.OnItemClickListener;
 
-public class AttendanceMenuFragment extends Fragment {
-	ListView attendList ;
-	ArrayAdapter<String> adapter2;
+public class ProDateFragment extends Fragment {
 	int position = 0;
-
-	ArrayList<String> myAttend;
-	String userID, attend = "";
+	String userID ="",date="";
+	ListView AttendList;
+	ArrayList<String> StAttend;
+	ArrayAdapter<String> adapter3;
 	LinearLayout activityList;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		Log.d( getClass().getName(), " onCreateView() enterance ");
-		View v = inflater.inflate( R.layout.attendance_menu_fragment , container, false);
-		//getActivity().setVisible(View.GONE);
-		
+		Log.d(getClass().getName(), " onCreateView() enterance ");
+		View v = inflater.inflate(R.layout.pro_date_fragment,
+				container, false);
+		// getActivity().setVisible(View.GONE);
+
 		return v;
 	}
-	
-	
 
-	@Override
 	public void onStart() {
 		// TODO Auto-generated method stub
-		//txt = (TextView) getActivity().findViewById(R.id.course);
-		
+		// txt = (TextView) getActivity().findViewById(R.id.course);
+
 		super.onStart();
-		position = ((AttendenceMenu) getActivity()).Position;
-		userID = ((AttendenceMenu) getActivity()).id;
-		myAttend = new ArrayList<String>();
-		
-		attendList = (ListView)getActivity().findViewById(R.id.myAttendList);
+		date = ((ProAttendenceMenu) getActivity()).Date;
+		position = ((ProAttendenceMenu)getActivity()).Position;
+		userID = ((ProAttendenceMenu) getActivity()).user_id;
 		
 		
-		//for(String course : course_list)
-		//{
-		//	Log.d("course_list", course);
-		//}
-		//for(String course : ((AttendenceMenu) getActivity()).courseList)
-		//{
-		//	Log.d("Activity courseList",course);
-		//}
-		//Log.d("position = ", position+"");
+		StAttend = new ArrayList<String>();
+
+		AttendList = (ListView) getActivity().findViewById(R.id.dateList);
+
 		
+		// for(String course : course_list)
+		// {
+		// Log.d("course_list", course);
+		// }
+		// for(String course : ((AttendenceMenu) getActivity()).courseList)
+		// {
+		// Log.d("Activity courseList",course);
+		// }
+		// Log.d("position = ", position+"");
+
 		// adapter = new
 		// ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,);
 		// menulist = (ListView)findViewById(R.id.myList);
-		//txt.setText(course_list.get(position).toString());
+		// txt.setText(course_list.get(position).toString());
 		new CheckAttend().execute();
-		
-		
+
 	}
 
 	public class CheckAttend extends AsyncTask<Void, Void, Void> {
@@ -94,28 +96,27 @@ public class AttendanceMenuFragment extends Fragment {
 			// TODO Auto-generated method stub
 			super.onPreExecute();
 
-
 		}
 
 		@Override
 		protected void onPostExecute(Void result) {
 			// TODO Auto-generated method stub
 			super.onPostExecute(result);
-			for(String attend : myAttend)
-			{
-				Log.d("attend",attend);
+			for (String attend : StAttend) {
+				Log.d("attend", attend);
 			}
-			
-			
-			adapter2 = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,myAttend);
-			//if(attendList == null)
-			//	Log.d("list","null");
-			//if(adapter2 == null)
-			//	Log.d("adapter2","null");
-				
-			activityList = (LinearLayout)getActivity().findViewById(R.id.Layout);
+
+			adapter3 = new ArrayAdapter<String>(getActivity(),
+					android.R.layout.simple_list_item_1, StAttend);
+			// if(attendList == null)
+			// Log.d("list","null");
+			// if(adapter2 == null)
+			// Log.d("adapter2","null");
+
+			activityList = (LinearLayout) getActivity().findViewById(
+					R.id.pLayout);
 			activityList.setVisibility(View.GONE);
-		    attendList.setAdapter(adapter2);
+			AttendList.setAdapter(adapter3);
 			// Log.d("5", check);
 
 		}
@@ -125,9 +126,10 @@ public class AttendanceMenuFragment extends Fragment {
 
 			ArrayList<NameValuePair> post = new ArrayList<NameValuePair>();
 			post.add(new BasicNameValuePair("U_ID", userID));
-			post.add(new BasicNameValuePair("C_ID", ((AttendenceMenu) getActivity()).course_id_list.get(position).toString()));
-			Log.d("course_Id",((AttendenceMenu) getActivity()).course_id_list.get(position).toString());
-			
+			post.add(new BasicNameValuePair("C_ID",
+					((ProAttendenceMenu) getActivity()).course_id_list.get(
+							position).toString()));
+			post.add(new BasicNameValuePair("Date",date));
 			// 楷搬 HttpClient 按眉 积己
 			HttpClient client = new DefaultHttpClient();
 
@@ -138,7 +140,7 @@ public class AttendanceMenuFragment extends Fragment {
 
 			// Post按眉 积己
 			HttpPost httpPost = new HttpPost("http://jdrive.synology.me"
-					+ "/checkAttendance.php?");
+					+ "/checkDateAttend.php?");
 			try {
 				UrlEncodedFormEntity entity = new UrlEncodedFormEntity(post,
 						"utf-8");
@@ -150,18 +152,18 @@ public class AttendanceMenuFragment extends Fragment {
 				check = EntityUtils.toString((res.getEntity()));
 				Log.d("Reulst", check);
 				String[] split = check.split(" ");
-				Log.d("before if",split[0]);
+				Log.d("before if", split[0]);
 				if (!(split[0].trim().equalsIgnoreCase("noData"))) {
-					
-					for (int j = 1; j < split.length; j++) {
-						Log.d("beforeSpilit",split[j]);
-						String[] attend = split[j].split("/");
-						Log.d("attend[0],attend[1]", "Date :" +attend[0] + " " + "point "+attend[1]);
-						myAttend.add("Date : " + attend[0].trim()+" "+"point : "+attend[1].trim()); 
+
+					for (int j = 1; j < split.length; j++)
+					{
+						String[] txt = split[j].split("/");
+						if(!(txt[2].startsWith("1")))
+						StAttend.add("Date : " + txt[0] + " Name : " +txt[1]
+								+ " U_Id : " + txt[2] + " Point : " +txt[3] );
 					}
-				} 
-				else
-					myAttend.add("noData");
+				} else
+					StAttend.add("noData");
 
 			} catch (ClientProtocolException e) {
 				e.printStackTrace();
@@ -171,4 +173,5 @@ public class AttendanceMenuFragment extends Fragment {
 		}
 
 	}
+
 }
