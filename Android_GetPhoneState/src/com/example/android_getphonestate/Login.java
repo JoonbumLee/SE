@@ -81,8 +81,8 @@ public class Login extends Activity implements OnClickListener {
          // TODO Auto-generated method stub
          super.onPostExecute(result);
          
-         check = check.trim();
-         Log.d("5", check);
+         
+         //Log.d("5", check);
          if (check.equalsIgnoreCase("true")) {
             if (id.startsWith("1"))
             {
@@ -148,17 +148,18 @@ public class Login extends Activity implements OnClickListener {
             check = EntityUtils.toString((res.getEntity()));
             Log.d("Reulst", check);
             String[] split = check.split(" ");
+            
             if(split[0].trim().equalsIgnoreCase("true"))
             {
             	check =split[0];
             	for(int j=1; j<split.length; j++)
             	{
-            		course_list = course_list + split[j];
+            		course_list = course_list + split[j]+ " ";
             	}
             }
             else
             	check = "false";
-            
+            check = check.trim();
             
          } catch (ClientProtocolException e) {
             e.printStackTrace();
