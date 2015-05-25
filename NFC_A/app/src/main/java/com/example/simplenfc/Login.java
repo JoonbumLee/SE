@@ -26,10 +26,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+
 public class Login extends Activity implements OnClickListener {
     Button btn1, btn2;
     EditText ID, PW;
     private String id, pw, check = "false";
+    ArrayList<String> course_name_list;
+    ArrayList<String> course_id_list;
+    ArrayList<String> course_time_list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,18 @@ public class Login extends Activity implements OnClickListener {
         btn2.setOnClickListener(this);
         ID = (EditText) findViewById(R.id.id);
         PW = (EditText) findViewById(R.id.pw);
+        course_name_list = new ArrayList<String>();
+        course_id_list = new ArrayList<String>();
+        course_time_list = new ArrayList<String>();
+    }
+
+    @Override
+    protected void onResume() {
+        // TODO Auto-generated method stub
+        super.onResume();
+        course_name_list.clear();
+        course_id_list.clear();
+        course_time_list.clear();
     }
 
     public void onClick(View v) {
@@ -51,11 +67,6 @@ public class Login extends Activity implements OnClickListener {
             new CheckID().execute();
             // Log.d(getClass().getName(), check);
             // Log.d("onClcik", "" + 4);
-
-        }
-        else {
-            Intent myIntent= new Intent(Login.this , ProAttendenceMenu.class);
-            startActivity( myIntent );
 
         }
 
@@ -85,17 +96,27 @@ public class Login extends Activity implements OnClickListener {
         protected void onPostExecute(Void result) {
             // TODO Auto-generated method stub
             super.onPostExecute(result);
-            Log.d("5", check);
-            check = check.trim();
+
+            // Log.d("5", check);
             if (check.equalsIgnoreCase("true")) {
-                if (id.startsWith("1"))
-                {
-                    Intent myIntent= new Intent(Login.this , ProAttendenceMenu.class);
+                if (id.startsWith("1")) {
+                    Bundle myBundle = new Bundle();
+                    myBundle.putStringArrayList("course_name_list", course_name_list);
+                    myBundle.putStringArrayList("course_id_list", course_id_list);
+                    myBundle.putStringArrayList("course_time_list", course_time_list);
+                    myBundle.putString("userId",id);
+                    Intent myIntent = new Intent(Login.this,
+                            ProAttendenceMenu.class);
+                    myIntent.putExtras(myBundle);
                     startActivity(myIntent);
-                }
-                else
-                {
-                    Intent myIntent= new Intent(Login.this , MembershipForm.class);
+                } else {
+                    Intent myIntent = new Intent(Login.this,
+                            AttendenceMenu.class);
+                    Bundle myBundle = new Bundle();
+                    myBundle.putStringArrayList("course_name_list", course_name_list);
+                    myBundle.putStringArrayList("course_id_list", course_id_list);
+                    myBundle.putStringArrayList("course_time_list", course_time_list);
+                    myIntent.putExtras(myBundle);
                     startActivity(myIntent);
                 }
             }
@@ -109,7 +130,7 @@ public class Login extends Activity implements OnClickListener {
             }
         }
 
-        // ���� �����ϴ� �κ�
+        // 실제 전송하는 부분
         public void checkDB() {
             ArrayList<String> Typed = new ArrayList<String>();
 
@@ -123,15 +144,15 @@ public class Login extends Activity implements OnClickListener {
             post.add(new BasicNameValuePair("ID", Typed.get(0).toString()));
             post.add(new BasicNameValuePair("PW", Typed.get(1).toString()));
 
-            // ���� HttpClient ��ü ����
+            // 연결 HttpClient 객체 생성
             HttpClient client = new DefaultHttpClient();
 
-            // ��ü ���� ���� �κ�, ���� �ִ�ð� ���
+            // 객체 연결 설정 부분, 연결 최대시간 등등
             HttpParams params = client.getParams();
             HttpConnectionParams.setConnectionTimeout(params, 5000);
             HttpConnectionParams.setSoTimeout(params, 5000);
 
-            // Post��ü ����
+            // Post객체 생성
             HttpPost httpPost = new HttpPost("http://jdrive.synology.me"
                     + "/checkLogin.php?");
             check = null;
@@ -145,12 +166,24 @@ public class Login extends Activity implements OnClickListener {
                 HttpResponse res = client.execute(httpPost);
                 check = EntityUtils.toString((res.getEntity()));
                 Log.d("Reulst", check);
-                String[] split = check.split("/");
+                String[] split = check.split(" ");
+                course_name_list.add("attendance");
+                course_id_list.add("0");
+                course_time_list.add("0");
 
-                check = split[0];
-                id = split[1];
-                Log.d("check", check);
-                Log.d("id", id);
+                if (split[0].trim().equalsIgnoreCase("true")) {
+                    check = split[0];
+                    for (int j = 1; j < split.length; j++)
+                    {
+                        String[] list = split[j].split("/");
+                        course_name_list.add(list[0]);
+                        course_id_list.add(list[1]);
+                        course_time_list.add(list[2]);
+                    }
+                } else
+                    check = split[0];
+                check = check.trim();
+
             } catch (ClientProtocolException e) {
                 e.printStackTrace();
             } catch (IOException e) {
