@@ -78,29 +78,5 @@ public class MainActivity extends Activity implements OnClickListener {
 
 		tv1.setText(macAddress+"");
 	}
-	public void getLocalIpAddress()
-	{
-	    try {
-	        for (Enumeration en = NetworkInterface.getNetworkInterfaces(); en.hasMoreElements();) {
-	            NetworkInterface intf = (NetworkInterface)en.nextElement();
-	            for (Enumeration enumIpAddr = intf.getInetAddresses(); enumIpAddr.hasMoreElements();) {
-	                InetAddress inetAddress = (InetAddress)enumIpAddr.nextElement();
-	                if (!inetAddress.isLoopbackAddress()) {
-	                    tv2.setText(inetAddress.getHostAddress().toString());
-	                }
-	            }
-	        }
-	    } catch (SocketException ex) {
-	        Log.e(LOG_TAG, ex.toString());
-	    }
-	}
-	public void getLocalPhoneNumber(){ //전화번호
-    	TelephonyManager manager = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
-    	tv3.setText(manager.getLine1Number());
-    }
-}
 
 
-
-
-// Test committing.
