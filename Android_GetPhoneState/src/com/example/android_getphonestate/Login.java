@@ -93,6 +93,7 @@ public class Login extends Activity implements OnClickListener {
 				if (id.startsWith("1")) {
 					Bundle myBundle = new Bundle();
 					myBundle.putString("course_list", course_list);
+					myBundle.putString("userId", id);
 					Intent myIntent = new Intent(Login.this,
 							ProAttendenceMenu.class);
 					myIntent.putExtras(myBundle);
