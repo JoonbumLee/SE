@@ -1,4 +1,5 @@
 package com.example.simplenfc;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -45,24 +46,130 @@ import android.media.*;
 import android.content.*;
 import android.os.Build;
 
+import java.util.ArrayList;
+
+import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Display;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+
+import java.util.Date;
+import java.text.SimpleDateFormat;
+
+
 public class AttendenceMenu extends Activity implements OnClickListener {
-    Button btn1, btn2;
-    private NfcAdapter mAdapter;
-    private PendingIntent mPendingIntent;
-    private IntentFilter[] mFilters;
-    private String[][] mTechLists;
 
-    public static final int TYPE_TEXT = 1;
-    public static final int TYPE_URI = 2;
+    ArrayList<String> course_name_list;
+    ArrayList<String> course_id_list;
+    ArrayList<String> course_time_list;
+    ArrayAdapter adapter;
+    ListView list;
+    int Position=0;
+    String id;
+    AttendanceMenuFragment frag1;
+    FragmentManager fragmentManager;
+    FragmentTransaction fragmentTransaction;
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attendencemenu);
-        btn1 = (Button)findViewById(R.id.attendBtn);
-        btn2 = (Button)findViewById(R.id.checkBtn);
-        btn1.setOnClickListener(this);
-        btn2.setOnClickListener(this);
+        Intent myIntent = getIntent();
+        Bundle myBundle = myIntent.getExtras();
+
+        course_name_list = myBundle.getStringArrayList("course_name_list");
+        course_id_list = myBundle.getStringArrayList("course_id_list");
+        course_time_list = myBundle.getStringArrayList("course_time_list");
+        id = myBundle.getString("userId");
+        adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,course_name_list);
+        list = (ListView)findViewById(R.id.myList);
+        list.setAdapter(adapter);
+
+        list.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long l_id) {
+                // TODO Auto-generated method stub
+                Position = position;
+                if(Position == 0){
+                    long now = System.currentTimeMillis();
+                    Date n_date = new Date(now);
+
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm", java.util.Locale.getDefault());
+                    String strDate = dateFormat.format(n_date);
+                    String date = strDate.substring(0,11);
+                    String time = strDate.substring(strDate.indexOf(' ')+1);
+
+                    Log.d("Time", time);
+
+                    int hour = Integer.parseInt(time.substring(0,2));
+                    int minute = Integer.parseInt(time.substring(time.indexOf(':')+1));
+
+                    String table_time="";
+
+                    for(int i=1; i< course_time_list.size(); i++)
+                    {
+                        table_time = course_time_list.get(i);
+                        Log.d("Course_T", time);
+
+                        //내가 지금 출석체크해야 하는 강의가 맞는지 확인
+                        if(AttendChecker(hour, minute, table_time)){
+                            /* TO DO
+                            맞으면 course_id 가지고 오기
+                            */
+
+                            Bundle tarBundle = new Bundle();
+                            tarBundle.putString("s_id", id);
+                            tarBundle.putString("c_id", course_id_list.get(i));
+                            tarBundle.putString("time", time);
+                            tarBundle.putString("date", date);
+                            Intent tarIntent = new Intent(AttendenceMenu.this, ReadActivity.class);
+                            tarIntent.putExtras(tarBundle);
+                            startActivity(tarIntent);
+                        }
+
+                    }
+
+
+
+                }
+                else
+                    changeFragment();
+
+            }
+        });
+
+    }
+    private boolean AttendChecker(int hour,int min, String course_time){
+
+        int s_hour=Integer.parseInt(course_time.substring(0,2) );
+        int s_min=Integer.parseInt(course_time.substring(3,5 ) );
+        int e_hour=Integer.parseInt(course_time.substring(6,8 ) );
+        int e_min= Integer.parseInt(course_time.substring(9) );
+
+        int time = hour * 60 + min;
+
+        int sTime = s_hour * 60 + s_min;
+        int eTime = e_hour * 60 + e_min;
+
+        if( time > sTime -10 &&time < sTime)
+        {
+            return true;
+        }
+        else if(time > eTime -10 && time < eTime)
+            return true;
+        else return false;
     }
 
     @Override
@@ -86,6 +193,104 @@ public class AttendenceMenu extends Activity implements OnClickListener {
 
     @Override
     public void onClick(View v) {
+        // TODO Auto-generated method stub
+
+    }
+
+    public void changeFragment() {
+
+        frag1 = new AttendanceMenuFragment();
+        fragmentManager = getFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(android.R.id.content, frag1);
+        fragmentTransaction.commit();
+    }
+    public void attendance() {
+
+    }
+
+}
+/*
+public class AttendenceMenu extends Activity implements OnClickListener {
+
+    ArrayAdapter<String> adapter;
+    ArrayList<String> courseList;
+    ListView list;
+    int Position=0;
+    String id;
+   // AttendanceMenuFragment frag1;
+    FragmentManager fragmentManager;
+    FragmentTransaction fragmentTransaction;
+
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_attendencemenu);
+        Intent myIntent = getIntent();
+        Bundle myBundle = myIntent.getExtras();
+        id = myBundle.getString("userId");
+        String course = myBundle.getString("course_list");
+        String[] txt = course.split(" ");
+        courseList = new ArrayList<String>();
+        if(!(courseList.contains("Attendance")))
+        {
+            courseList.add("Attendance");
+        }
+        for(int i = 0; i< txt.length; i++)
+        {
+            //Log.d("text",txt[i]);
+            if(!courseList.contains(txt[i]))
+                courseList.add(txt[i]);
+            //Log.d("courseList",courseList.get(i).toString());
+        }
+
+        adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,courseList);
+        list = (ListView)findViewById(R.id.myList);
+        list.setAdapter(adapter);
+
+        list.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                // TODO Auto-generated method stub
+                Position = position;
+                if(Position == 0) {
+                    startActivity(new Intent(AttendenceMenu.this, ReadActivity.class ));
+                }
+                else
+                    changeFragment();
+
+            }
+        });
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v) {
+        // TODO Auto-generated method stub
+
+    }
+    /*
+    @Override
+    public void onClick(View v) {
         if(v.getId() == btn1.getId())
         {
             startActivity(new Intent(this, Attend.class));
@@ -95,4 +300,22 @@ public class AttendenceMenu extends Activity implements OnClickListener {
             startActivity(new Intent(this, showAttendence.class));
         }
     }
-}
+    */
+
+    /*
+    public void changeFragment() {
+
+
+        frag1 = new AttendanceMenuFragment();
+        fragmentManager = getFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(android.R.id.content, frag1);
+        fragmentTransaction.commit();
+
+    }
+    public void attendance() {
+
+    }
+
+}*/
+

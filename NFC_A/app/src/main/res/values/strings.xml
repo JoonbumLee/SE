@@ -14,5 +14,6 @@
     <string name="title_activity_pro_attendence_menu">ProAttendenceMenu</string>
     <string name="title_activity_pro_one_attend">ProOneAttend</string>
     <string name="title_activity_show_attendence">showAttendence</string>
+    <string name="title_activity_attendance_menu_fragment">AttendanceMenuFragment</string>
 
 </resources>
