@@ -29,7 +29,10 @@ import android.widget.Toast;
 public class Login extends Activity implements OnClickListener {
 	Button btn1, btn2;
 	EditText ID, PW;
-	private String id, pw, check = "false", course_list = "";
+	private String id, pw, check = "false";
+	ArrayList<String> course_name_list;
+	ArrayList<String> course_id_list;
+	ArrayList<String> course_time_list; 
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,13 +44,18 @@ public class Login extends Activity implements OnClickListener {
 		btn2.setOnClickListener(this);
 		ID = (EditText) findViewById(R.id.id);
 		PW = (EditText) findViewById(R.id.pw);
+		course_name_list = new ArrayList<String>();
+		course_id_list = new ArrayList<String>();
+		course_time_list = new ArrayList<String>();
 	}
 
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		course_list= "";
+		course_name_list.clear();
+		course_id_list.clear();
+		course_time_list.clear();
 	}
 
 	public void onClick(View v) {
@@ -92,8 +100,10 @@ public class Login extends Activity implements OnClickListener {
 			if (check.equalsIgnoreCase("true")) {
 				if (id.startsWith("1")) {
 					Bundle myBundle = new Bundle();
-					myBundle.putString("course_list", course_list);
-					myBundle.putString("userId", id);
+					myBundle.putStringArrayList("course_name_list", course_name_list);
+					myBundle.putStringArrayList("course_id_list", course_id_list);
+					myBundle.putStringArrayList("course_time_list", course_time_list);
+					myBundle.putString("userId",id);
 					Intent myIntent = new Intent(Login.this,
 							ProAttendenceMenu.class);
 					myIntent.putExtras(myBundle);
@@ -102,7 +112,10 @@ public class Login extends Activity implements OnClickListener {
 					Intent myIntent = new Intent(Login.this,
 							AttendenceMenu.class);
 					Bundle myBundle = new Bundle();
-					myBundle.putString("course_list", course_list);
+					myBundle.putStringArrayList("course_name_list", course_name_list);
+					myBundle.putStringArrayList("course_id_list", course_id_list);
+					myBundle.putStringArrayList("course_time_list", course_time_list);
+					myBundle.putString("userId",id);
 					myIntent.putExtras(myBundle);
 					startActivity(myIntent);
 				}
@@ -154,11 +167,15 @@ public class Login extends Activity implements OnClickListener {
 				check = EntityUtils.toString((res.getEntity()));
 				Log.d("Reulst", check);
 				String[] split = check.split(" ");
-
+				
 				if (split[0].trim().equalsIgnoreCase("true")) {
 					check = split[0];
-					for (int j = 1; j < split.length; j++) {
-						course_list = course_list + split[j] + " ";
+					for (int j = 1; j < split.length; j++) 
+					{
+						String[] list = split[j].split("/");
+						course_name_list.add(list[0]);
+						course_id_list.add(list[1]);
+						course_time_list.add(list[2]);
 					}
 				} else
 					check = split[0];

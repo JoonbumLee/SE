@@ -21,8 +21,10 @@ import android.widget.ListView;
 
 public class AttendenceMenu extends Activity implements OnClickListener {
 	
-	ArrayAdapter<String> adapter;
-	ArrayList<String> courseList;
+	ArrayList<String> course_name_list;
+	ArrayList<String> course_id_list;
+	ArrayList<String> course_time_list; 
+	ArrayAdapter adapter;
 	ListView list;
 	int Position=0;
 	String id;
@@ -35,23 +37,24 @@ public class AttendenceMenu extends Activity implements OnClickListener {
 		setContentView(R.layout.activity_attendencemenu);
 		Intent myIntent = getIntent();
 		Bundle myBundle = myIntent.getExtras();
-		id = myBundle.getString("userId");
-		String course = myBundle.getString("course_list");
-		String[] txt = course.split(" ");
-		courseList = new ArrayList<String>();
-		if(!(courseList.contains("Attendance")))
-		{
-			courseList.add("Attendance");
-		}
-		for(int i = 0; i< txt.length; i++)
-		{
-			//Log.d("text",txt[i]);
-			if(!courseList.contains(txt[i]))
-				courseList.add(txt[i]);
-			//Log.d("courseList",courseList.get(i).toString());
-		}
 		
-		adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,courseList);
+		course_name_list = new ArrayList<String>();
+		course_id_list = new ArrayList<String>();
+		course_time_list = new ArrayList<String>();
+	
+		course_name_list.add("attendance");
+		course_id_list.add("0");
+		course_time_list.add("0");
+		
+		for(String course : myBundle.getStringArrayList("course_name_list") )
+			course_name_list.add(course);
+		for(String course : myBundle.getStringArrayList("course_id_list") )
+			course_id_list.add(course);
+		for(String course : myBundle.getStringArrayList("course_time_list") )
+			course_time_list.add(course);
+		
+		id = myBundle.getString("userId");
+		adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,course_name_list);
 	    list = (ListView)findViewById(R.id.myList);
 	    list.setAdapter(adapter);
 	    
