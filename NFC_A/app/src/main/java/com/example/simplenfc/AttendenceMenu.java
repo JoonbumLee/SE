@@ -72,6 +72,8 @@ import java.text.SimpleDateFormat;
 
 public class AttendenceMenu extends Activity implements OnClickListener {
 
+    static final boolean DEBUG_MODE = true;// 발표때 변수의 디폴트 값을 위한 모드
+
     ArrayList<String> course_name_list;
     ArrayList<String> course_id_list;
     ArrayList<String> course_time_list;
@@ -164,14 +166,16 @@ public class AttendenceMenu extends Activity implements OnClickListener {
             }
         }
 
-        Bundle tarBundle = new Bundle();
-        tarBundle.putString("s_id", id);
-        tarBundle.putString("c_id", course_id_list.get(2));
-        tarBundle.putString("time", time);
-        tarBundle.putString("date", date);
-        Intent tarIntent = new Intent(AttendenceMenu.this, ReadActivity.class);
-        tarIntent.putExtras(tarBundle);
-        startActivity(tarIntent);
+        if(DEBUG_MODE) {
+            Bundle tarBundle = new Bundle();
+            tarBundle.putString("s_id", id);
+            tarBundle.putString("c_id", course_id_list.get(1));
+            tarBundle.putString("time", time);
+            tarBundle.putString("date", date);
+            Intent tarIntent = new Intent(AttendenceMenu.this, ReadActivity.class);
+            tarIntent.putExtras(tarBundle);
+            startActivity(tarIntent);
+        }
 
 
 

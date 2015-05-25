@@ -18,10 +18,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d6bebb4-b116-47ac-b59c-2d0b59d5176c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/simplenfc/AttendanceMenuFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/simplenfc/AttendanceMenuFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/simplenfc/AttendenceMenu.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/simplenfc/AttendenceMenu.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/simplenfc/Login.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/simplenfc/Login.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/simplenfc/ReadActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/simplenfc/ReadActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SimpleNFC.iws" />
@@ -44,11 +41,11 @@
       <content type="file-editors">
         <state>
           <leaf>
-            <file leaf-file-name="Login.java" pinned="false" current="false" current-in-tab="true">
+            <file leaf-file-name="Login.java" pinned="false" current="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/simplenfc/Login.java">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.24611974" vertical-offset="1359" max-vertical-offset="3366">
-                    <caret line="93" column="17" selection-start-line="93" selection-start-column="17" selection-end-line="93" selection-end-column="17" />
+                  <state vertical-scroll-proportion="-18.296297" vertical-offset="1648" max-vertical-offset="3366">
+                    <caret line="126" column="72" selection-start-line="126" selection-start-column="72" selection-end-line="126" selection-end-column="72" />
                     <folding>
                       <element signature="imports" expanded="true" />
                       <element signature="e#2444#2452#0" expanded="true" />
@@ -72,11 +69,11 @@
                 </provider>
               </entry>
             </file>
-            <file leaf-file-name="AttendenceMenu.java" pinned="false" current="false" current-in-tab="false">
+            <file leaf-file-name="AttendenceMenu.java" pinned="false" current="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/simplenfc/AttendenceMenu.java">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.0" vertical-offset="2312" max-vertical-offset="5848">
-                    <caret line="168" column="56" selection-start-line="168" selection-start-column="56" selection-end-line="168" selection-end-column="56" />
+                  <state vertical-scroll-proportion="-4.0139937" vertical-offset="4987" max-vertical-offset="5916">
+                    <caret line="74" column="66" selection-start-line="74" selection-start-column="66" selection-end-line="74" selection-end-column="66" />
                     <folding>
                       <element signature="imports" expanded="true" />
                     </folding>
@@ -161,8 +158,8 @@
       <file leaf-file-name="ReadActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/simplenfc/ReadActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.51704544" vertical-offset="5932" max-vertical-offset="6545">
-              <caret line="365" column="46" selection-start-line="365" selection-start-column="46" selection-end-line="365" selection-end-column="46" />
+            <state vertical-scroll-proportion="3.3484848" vertical-offset="2346" max-vertical-offset="6545">
+              <caret line="242" column="37" selection-start-line="242" selection-start-column="37" selection-end-line="242" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#9543#9551#0" expanded="true" />
@@ -1433,8 +1430,8 @@
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/simplenfc/AttendanceMenuFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/simplenfc/Login.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/simplenfc/AttendenceMenu.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/simplenfc/ReadActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/simplenfc/AttendenceMenu.java" />
       </list>
     </option>
   </component>
@@ -1854,7 +1851,11 @@
       <created>1432582661973</created>
       <updated>1432582661973</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="commit until scanned data">
+      <created>1432586399022</created>
+      <updated>1432586399022</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1874,7 +1875,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32807216" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32919955" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32919955" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32919955" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32919955" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3037694" sideWeight="0.49915966" order="0" side_tool="false" content_ui="combo" />
@@ -1938,7 +1939,8 @@
     </option>
     <MESSAGE value="Changes in Locan by Joon" />
     <MESSAGE value="Changes in Local by Joon&#10;NFC" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes in Local by Joon&#10;NFC" />
+    <MESSAGE value="commit until scanned data" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit until scanned data" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2359,16 +2361,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/simplenfc/AttendenceMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2312" max-vertical-offset="5848">
-          <caret line="168" column="56" selection-start-line="168" selection-start-column="56" selection-end-line="168" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/AppData/Local/Android/sdk/platforms/android-17/android.jar!/android/widget/Toast.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="295" max-vertical-offset="850">
@@ -2379,8 +2371,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/simplenfc/Login.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24611974" vertical-offset="1359" max-vertical-offset="3366">
-          <caret line="93" column="17" selection-start-line="93" selection-start-column="17" selection-end-line="93" selection-end-column="17" />
+        <state vertical-scroll-proportion="-18.296297" vertical-offset="1648" max-vertical-offset="3366">
+          <caret line="126" column="72" selection-start-line="126" selection-start-column="72" selection-end-line="126" selection-end-column="72" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2444#2452#0" expanded="true" />
@@ -2390,10 +2382,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/simplenfc/AttendenceMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.0139937" vertical-offset="4987" max-vertical-offset="5916">
+          <caret line="74" column="66" selection-start-line="74" selection-start-column="66" selection-end-line="74" selection-end-column="66" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/simplenfc/ReadActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.51704544" vertical-offset="5932" max-vertical-offset="6545">
-          <caret line="365" column="46" selection-start-line="365" selection-start-column="46" selection-end-line="365" selection-end-column="46" />
+        <state vertical-scroll-proportion="3.3484848" vertical-offset="2346" max-vertical-offset="6545">
+          <caret line="242" column="37" selection-start-line="242" selection-start-column="37" selection-end-line="242" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#9543#9551#0" expanded="true" />
