@@ -6,5 +6,13 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_read">NFC 태그 읽기</string>
     <string name="title_activity_write">NFC 태그 쓰기</string>
+    <string name="title_activity_attend">Attend</string>
+    <string name="title_activity_attendence_menu">AttendenceMenu</string>
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_membership_form">MembershipForm</string>
+    <string name="title_activity_pro_all_attend">ProAllAttend</string>
+    <string name="title_activity_pro_attendence_menu">ProAttendenceMenu</string>
+    <string name="title_activity_pro_one_attend">ProOneAttend</string>
+    <string name="title_activity_show_attendence">showAttendence</string>
 
 </resources>
