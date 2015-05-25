@@ -2,17 +2,21 @@ package com.example.android_getphonestate;
 
 import java.util.ArrayList;
 
-
-
 import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 public class AttendenceMenu extends Activity implements OnClickListener {
@@ -20,12 +24,18 @@ public class AttendenceMenu extends Activity implements OnClickListener {
 	ArrayAdapter<String> adapter;
 	ArrayList<String> courseList;
 	ListView list;
+	int Position=0;
+	String id;
+	AttendanceMenuFragment frag1;
+	FragmentManager fragmentManager;
+	FragmentTransaction fragmentTransaction;
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_attendencemenu);
 		Intent myIntent = getIntent();
 		Bundle myBundle = myIntent.getExtras();
+		id = myBundle.getString("userId");
 		String course = myBundle.getString("course_list");
 		String[] txt = course.split(" ");
 		courseList = new ArrayList<String>();
@@ -44,23 +54,21 @@ public class AttendenceMenu extends Activity implements OnClickListener {
 		adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,courseList);
 	    list = (ListView)findViewById(R.id.myList);
 	    list.setAdapter(adapter);
-	    /*
-	    //update list
-	    adapter.clear();
-	    courseList.clear();
-	    courseList = new ArrayList<String>();
-	    //adapter.notifyDataSetInvalidated();
-	    courseList.add("Attendance");
-		for(int i = 0; i< txt.length; i++)
-		{
-			//Log.d("text",txt[i]);
-			courseList.add(txt[i]);
-			//Log.d("courseList",courseList.get(i).toString());
-		}
-		adapter.addAll(courseList);
-		
-		adapter.notifyDataSetChanged();
-		*/
+	    
+	    list.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				// TODO Auto-generated method stub
+				Position = position;
+				if(Position == 0)
+					attendance();
+				else
+					changeFragment();
+				
+			}
+		});
+	    
 	}
 
 	@Override
@@ -100,4 +108,16 @@ public class AttendenceMenu extends Activity implements OnClickListener {
 		}
 	}
 	*/
+	public void changeFragment() {
+		
+		frag1 = new AttendanceMenuFragment();
+		fragmentManager = getFragmentManager();
+		fragmentTransaction = fragmentManager.beginTransaction();
+		fragmentTransaction.replace(android.R.id.content, frag1);
+		fragmentTransaction.commit();
+	}
+	public void attendance() {
+		
+	}
+	
 }
