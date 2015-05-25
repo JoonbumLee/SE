@@ -270,6 +270,8 @@ public class ReadActivity extends ActionBarActivity {
             date = strDate.substring(0,11);
             time = strDate.substring(strDate.indexOf(' ')+1);
             */
+
+            new TryAttend().execute();
             readResult.append(recordStr + "\n" +"Time:"+time+"\nDate:"+date); // append read text value to TextView
         }
 
@@ -302,7 +304,7 @@ public class ReadActivity extends ActionBarActivity {
             super.onPostExecute(result);
 
             // Log.d("5", check);
-            if (check.equalsIgnoreCase("true")) {
+            if (check.trim().equalsIgnoreCase("true")) {
                 Toast.makeText(getApplication(), "Attendance Success",
                         Toast.LENGTH_SHORT).show();
             }
@@ -324,11 +326,14 @@ public class ReadActivity extends ActionBarActivity {
 
             int i;
             Log.d(getClass().getName(), " Start name value pair");
-            Log.d("ID", Typed.get(0).toString());
-            Log.d("PW", Typed.get(1).toString());
+            Log.d("U_ID", Typed.get(0).toString());
+            Log.d("Cour_id", Typed.get(1).toString());
+            Log.d("date", Typed.get(2).toString());
+
             ArrayList<NameValuePair> post = new ArrayList<NameValuePair>();
-            post.add(new BasicNameValuePair("ID", Typed.get(0).toString()));
-            post.add(new BasicNameValuePair("PW", Typed.get(1).toString()));
+            post.add(new BasicNameValuePair("U_ID", Typed.get(0).toString()));
+            post.add(new BasicNameValuePair("C_ID", Typed.get(1).toString()));
+            post.add(new BasicNameValuePair("DATE", Typed.get(2).toString()));
 
             // 연결 HttpClient 객체 생성
             HttpClient client = new DefaultHttpClient();
@@ -340,7 +345,7 @@ public class ReadActivity extends ActionBarActivity {
 
             // Post객체 생성
             HttpPost httpPost = new HttpPost("http://jdrive.synology.me"
-                    + "/checkLogin.php?");
+                    + "/Attend.php?");
             check = null;
             try {
                 UrlEncodedFormEntity entity = new UrlEncodedFormEntity(post,
@@ -352,16 +357,15 @@ public class ReadActivity extends ActionBarActivity {
                 HttpResponse res = client.execute(httpPost);
                 check = EntityUtils.toString((res.getEntity()));
                 Log.d("Reulst", check);
-                String[] split = check.split(" ");
+                if(check.trim().equalsIgnoreCase("true")){
 
-                if (split[0].trim().equalsIgnoreCase("true")) {
-                    check = split[0];
-                    for (int j = 1; j < split.length; j++) {
-                        course_list = course_list + split[j] + " ";
-                    }
-                } else
-                    check = split[0];
-                check = check.trim();
+                   // Toast.makeText(getApplicationContext(), "Attend success\n check course information if you want ", Toast.LENGTH_LONG).show();
+                    finish();
+                }
+                else{
+                    //Toast.makeText(getApplicationContext(), "failed \n please try again", Toast.LENGTH_LONG).show();
+                }
+
 
             } catch (ClientProtocolException e) {
                 e.printStackTrace();

@@ -1,9 +1,6 @@
 package com.example.simplenfc;
 
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -30,6 +27,7 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+
 
 public class AttendanceMenuFragment extends Fragment {
     ListView attendList ;
@@ -68,11 +66,11 @@ public class AttendanceMenuFragment extends Fragment {
 
         //for(String course : course_list)
         //{
-        //   Log.d("course_list", course);
+        //	Log.d("course_list", course);
         //}
         //for(String course : ((AttendenceMenu) getActivity()).courseList)
         //{
-        //   Log.d("Activity courseList",course);
+        //	Log.d("Activity courseList",course);
         //}
         //Log.d("position = ", position+"");
 
@@ -113,9 +111,9 @@ public class AttendanceMenuFragment extends Fragment {
 
             adapter2 = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,myAttend);
             //if(attendList == null)
-            //   Log.d("list","null");
+            //	Log.d("list","null");
             //if(adapter2 == null)
-            //   Log.d("adapter2","null");
+            //	Log.d("adapter2","null");
 
             activityList = (LinearLayout)getActivity().findViewById(R.id.Layout);
             activityList.setVisibility(View.GONE);
@@ -131,6 +129,7 @@ public class AttendanceMenuFragment extends Fragment {
             post.add(new BasicNameValuePair("U_ID", userID));
             post.add(new BasicNameValuePair("C_ID", ((AttendenceMenu) getActivity()).course_id_list.get(position).toString()));
             Log.d("course_Id",((AttendenceMenu) getActivity()).course_id_list.get(position).toString());
+
             // 연결 HttpClient 객체 생성
             HttpClient client = new DefaultHttpClient();
 

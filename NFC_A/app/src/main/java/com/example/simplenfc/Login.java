@@ -1,5 +1,5 @@
-
 package com.example.simplenfc;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -25,7 +25,6 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 
 public class Login extends Activity implements OnClickListener {
     Button btn1, btn2;
@@ -116,6 +115,7 @@ public class Login extends Activity implements OnClickListener {
                     myBundle.putStringArrayList("course_name_list", course_name_list);
                     myBundle.putStringArrayList("course_id_list", course_id_list);
                     myBundle.putStringArrayList("course_time_list", course_time_list);
+                    myBundle.putString("userId",id);
                     myIntent.putExtras(myBundle);
                     startActivity(myIntent);
                 }
@@ -167,9 +167,6 @@ public class Login extends Activity implements OnClickListener {
                 check = EntityUtils.toString((res.getEntity()));
                 Log.d("Reulst", check);
                 String[] split = check.split(" ");
-                course_name_list.add("attendance");
-                course_id_list.add("0");
-                course_time_list.add("0");
 
                 if (split[0].trim().equalsIgnoreCase("true")) {
                     check = split[0];

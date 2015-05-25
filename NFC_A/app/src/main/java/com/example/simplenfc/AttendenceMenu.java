@@ -1,5 +1,6 @@
 package com.example.simplenfc;
 
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -87,68 +88,92 @@ public class AttendenceMenu extends Activity implements OnClickListener {
         setContentView(R.layout.activity_attendencemenu);
         Intent myIntent = getIntent();
         Bundle myBundle = myIntent.getExtras();
+        course_name_list = new ArrayList<String>();
+        course_id_list = new ArrayList<String>();
+        course_time_list = new ArrayList<String>();
 
-        course_name_list = myBundle.getStringArrayList("course_name_list");
-        course_id_list = myBundle.getStringArrayList("course_id_list");
-        course_time_list = myBundle.getStringArrayList("course_time_list");
+        course_name_list.add("attendance");
+        course_id_list.add("0");
+        course_time_list.add("0");
+
+        for(String course : myBundle.getStringArrayList("course_name_list") )
+            course_name_list.add(course);
+        for(String course : myBundle.getStringArrayList("course_id_list") )
+            course_id_list.add(course);
+        for(String course : myBundle.getStringArrayList("course_time_list") )
+            course_time_list.add(course);
+
         id = myBundle.getString("userId");
+
         adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,course_name_list);
         list = (ListView)findViewById(R.id.myList);
         list.setAdapter(adapter);
 
         list.setOnItemClickListener(new OnItemClickListener() {
+
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long l_id) {
                 // TODO Auto-generated method stub
                 Position = position;
-                if(Position == 0){
-                    long now = System.currentTimeMillis();
-                    Date n_date = new Date(now);
-
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm", java.util.Locale.getDefault());
-                    String strDate = dateFormat.format(n_date);
-                    String date = strDate.substring(0,11);
-                    String time = strDate.substring(strDate.indexOf(' ')+1);
-
-                    Log.d("Time", time);
-
-                    int hour = Integer.parseInt(time.substring(0,2));
-                    int minute = Integer.parseInt(time.substring(time.indexOf(':')+1));
-
-                    String table_time="";
-
-                    for(int i=1; i< course_time_list.size(); i++)
-                    {
-                        table_time = course_time_list.get(i);
-                        Log.d("Course_T", time);
-
-                        //내가 지금 출석체크해야 하는 강의가 맞는지 확인
-                        if(AttendChecker(hour, minute, table_time)){
-                            /* TO DO
-                            맞으면 course_id 가지고 오기
-                            */
-
-                            Bundle tarBundle = new Bundle();
-                            tarBundle.putString("s_id", id);
-                            tarBundle.putString("c_id", course_id_list.get(i));
-                            tarBundle.putString("time", time);
-                            tarBundle.putString("date", date);
-                            Intent tarIntent = new Intent(AttendenceMenu.this, ReadActivity.class);
-                            tarIntent.putExtras(tarBundle);
-                            startActivity(tarIntent);
-                        }
-
-                    }
-
-
-
+                if(position == 0) {
+                    Log.d("Attendance","call attendance method");
+                    attendance();
                 }
                 else
                     changeFragment();
 
             }
         });
+
+    }
+
+    private void attendance(){
+        long now = System.currentTimeMillis();
+        Date n_date = new Date(now);
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm", java.util.Locale.getDefault());
+        String strDate = dateFormat.format(n_date);
+        String date = strDate.substring(0,11);
+        String time = strDate.substring(strDate.indexOf(' ')+1);
+
+        Log.d("Time", time);
+
+        int hour = Integer.parseInt(time.substring(0,2));
+        int minute = Integer.parseInt(time.substring(time.indexOf(':')+1));
+
+        String table_time="";
+
+        for(int i=1; i< course_time_list.size(); i++) {
+            table_time = course_time_list.get(i);
+            Log.d("Course_T", table_time);
+
+            //내가 지금 출석체크해야 하는 강의가 맞는지 확인
+            if (AttendChecker(hour, minute, table_time)) {
+                            /* TO DO
+                            맞으면 course_id 가지고 오기
+                            */
+                Bundle tarBundle = new Bundle();
+                tarBundle.putString("s_id", id);
+                tarBundle.putString("c_id", course_id_list.get(i));
+                tarBundle.putString("time", time);
+                tarBundle.putString("date", date);
+                Intent tarIntent = new Intent(AttendenceMenu.this, ReadActivity.class);
+                tarIntent.putExtras(tarBundle);
+                startActivity(tarIntent);
+            }
+        }
+
+        Bundle tarBundle = new Bundle();
+        tarBundle.putString("s_id", id);
+        tarBundle.putString("c_id", course_id_list.get(2));
+        tarBundle.putString("time", time);
+        tarBundle.putString("date", date);
+        Intent tarIntent = new Intent(AttendenceMenu.this, ReadActivity.class);
+        tarIntent.putExtras(tarBundle);
+        startActivity(tarIntent);
+
+
 
     }
     private boolean AttendChecker(int hour,int min, String course_time){
@@ -204,9 +229,6 @@ public class AttendenceMenu extends Activity implements OnClickListener {
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(android.R.id.content, frag1);
         fragmentTransaction.commit();
-    }
-    public void attendance() {
-
     }
 
 }
