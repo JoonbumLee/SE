@@ -78,6 +78,7 @@ public class ProAttendenceMenu extends Activity  {
 		fragmentManager = getFragmentManager();
 		fragmentTransaction = fragmentManager.beginTransaction();
 		fragmentTransaction.replace(android.R.id.content, frag1);
+		fragmentTransaction.addToBackStack(null);
 		fragmentTransaction.commit();
 	}
 	
@@ -88,6 +89,7 @@ public class ProAttendenceMenu extends Activity  {
 		fragmentManager = getFragmentManager();
 		fragmentTransaction = fragmentManager.beginTransaction();
 		fragmentTransaction.replace(android.R.id.content, frag2);
+		fragmentTransaction.addToBackStack(null);
 		fragmentTransaction.commit();
 	}
 }

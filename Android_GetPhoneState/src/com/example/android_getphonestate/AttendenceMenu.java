@@ -117,6 +117,7 @@ public class AttendenceMenu extends Activity implements OnClickListener {
 		fragmentManager = getFragmentManager();
 		fragmentTransaction = fragmentManager.beginTransaction();
 		fragmentTransaction.replace(android.R.id.content, frag1);
+		fragmentTransaction.addToBackStack(null);
 		fragmentTransaction.commit();
 	}
 	public void attendance() {

@@ -82,6 +82,12 @@ public class ProDateFragment extends Fragment {
 		new CheckAttend().execute();
 
 	}
+	@Override
+	public void onStop() {
+		// TODO Auto-generated method stub
+		super.onStop();
+		activityList.setVisibility(View.VISIBLE);
+	}
 
 	public class CheckAttend extends AsyncTask<Void, Void, Void> {
 		ArrayList<String> Typed = new ArrayList<String>();
