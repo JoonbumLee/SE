@@ -101,6 +101,7 @@ public class Login extends Activity implements OnClickListener {
             	startActivity(myIntent);
             }
          }
+       
 
          else {
             ID.setText("");
@@ -158,7 +159,7 @@ public class Login extends Activity implements OnClickListener {
             	}
             }
             else
-            	check = "false";
+            	check = split[0];
             check = check.trim();
             
          } catch (ClientProtocolException e) {
