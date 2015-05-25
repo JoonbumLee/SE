@@ -57,7 +57,7 @@ public class AttendanceMenuFragment extends Fragment {
 		// adapter = new
 		// ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,);
 		// menulist = (ListView)findViewById(R.id.myList);
-		txt.setText(course_list.get(position).toString());
+		//txt.setText(course_list.get(position).toString());
 		new CheckAttend().execute();
 		adapter2 = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,myAttend);
 	    attendList.setAdapter(adapter2);
