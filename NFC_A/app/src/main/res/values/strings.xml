@@ -4,8 +4,8 @@
     <string name="app_name">SimpleNFC</string>
     <string name="hello_world"></string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_read">NFC 태그 읽기</string>
-    <string name="title_activity_write">NFC 태그 쓰기</string>
+    <string name="title_activity_read">NFC Tag Reading</string>
+    <string name="title_activity_write">NFC Tag Writing</string>
     <string name="title_activity_attend">Attend</string>
     <string name="title_activity_attendence_menu">AttendenceMenu</string>
     <string name="title_activity_login">Login</string>

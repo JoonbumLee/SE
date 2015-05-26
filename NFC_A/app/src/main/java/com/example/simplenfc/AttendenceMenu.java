@@ -74,10 +74,12 @@ public class AttendenceMenu extends Activity implements OnClickListener {
 
     static final boolean DEBUG_MODE = true;// 발표때 변수의 디폴트 값을 위한 모드
 
+    ListViewCustomAdapter adapter; // customized adapter for UI
     ArrayList<String> course_name_list;
     ArrayList<String> course_id_list;
     ArrayList<String> course_time_list;
-    ArrayAdapter adapter;
+
+//    ArrayAdapter adapter;
     ListView list;
     int Position=0;
     String id;
@@ -94,20 +96,31 @@ public class AttendenceMenu extends Activity implements OnClickListener {
         course_id_list = new ArrayList<String>();
         course_time_list = new ArrayList<String>();
 
+        ArrayList<String> photos = new ArrayList<String>();
+
         course_name_list.add("attendance");
         course_id_list.add("0");
         course_time_list.add("0");
 
-        for(String course : myBundle.getStringArrayList("course_name_list") )
+        for(String course : myBundle.getStringArrayList("course_name_list") ) {
             course_name_list.add(course);
-        for(String course : myBundle.getStringArrayList("course_id_list") )
+            photos.add("A");
+        }
+        for(String course : myBundle.getStringArrayList("course_id_list") ) {
             course_id_list.add(course);
-        for(String course : myBundle.getStringArrayList("course_time_list") )
+            photos.add("A");
+        }
+        for(String course : myBundle.getStringArrayList("course_time_list") ) {
             course_time_list.add(course);
+            photos.add("A");
+        }
 
         id = myBundle.getString("userId");
 
-        adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,course_name_list);
+
+        adapter = new ListViewCustomAdapter(this, course_name_list, photos);
+
+        //adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,course_name_list);
         list = (ListView)findViewById(R.id.myList);
         list.setAdapter(adapter);
 

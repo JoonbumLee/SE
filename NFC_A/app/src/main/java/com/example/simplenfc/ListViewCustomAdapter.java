@@ -1,39 +1,88 @@
 package com.example.simplenfc;
 
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import java.util.ArrayList;
+import android.app.Activity;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 
-public class ListViewCustomAdapter extends ActionBarActivity {
+public class ListViewCustomAdapter extends BaseAdapter {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.listview_row);
+    public ArrayList<String> album_names;
+
+    public ArrayList<String> photos;
+
+    public Activity context;
+
+    public LayoutInflater inflater;
+
+    public ListViewCustomAdapter(Activity context,
+                                 ArrayList<String> album_names, ArrayList<String> photos) {
+        // TODO Auto-generated constructor stub
+        //super();
+        this.context = context;
+        this.album_names = album_names;
+        this.photos = photos;
+
+        this.inflater = (LayoutInflater) context
+                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_list_view_custom_adapter, menu);
-        return true;
+    public int getCount() {
+        // TODO Auto-generated method stub
+        return album_names.size();
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+    public Object getItem(int position) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+    public long getItemId(int position) {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    public class ViewHolder {
+        ImageView thumbnail;
+        TextView txtViewAlbum;
+        TextView txtViewPhotos;
+
+    }
+
+    public View getView(int position, View convertview, ViewGroup parent) {
+        // TODO Auto-generated method stub
+
+        ViewHolder holder;
+        if (convertview == null) {
+            holder = new ViewHolder();
+            convertview = inflater.inflate(R.layout.listview_row, null);
+
+
+            holder.thumbnail = (ImageView) convertview
+                    .findViewById(R.id.imgViewLogo);
+            holder.txtViewAlbum = (TextView) convertview
+                    .findViewById(R.id.txtViewTitle);
+            holder.txtViewPhotos = (TextView) convertview
+                    .findViewById(R.id.txtViewDescription);
+
+            convertview.setTag(holder);
         }
 
-        return super.onOptionsItemSelected(item);
+        else
+
+            holder = (ViewHolder) convertview.getTag();
+
+        holder.thumbnail.setImageResource(R.drawable.gachon);
+        holder.txtViewAlbum.setText(album_names.get(position));
+        holder.txtViewPhotos.setText(photos.get(position));
+
+        return convertview;
     }
+
 }

@@ -756,7 +756,15 @@ containing a value of this type.
         public static final int abc_textfield_searchview_holo_light=0x7f020054;
         public static final int abc_textfield_searchview_right_holo_dark=0x7f020055;
         public static final int abc_textfield_searchview_right_holo_light=0x7f020056;
-        public static final int ic_launcher=0x7f020057;
+        public static final int arrow=0x7f020057;
+        public static final int back=0x7f020058;
+        public static final int button=0x7f020059;
+        public static final int edit_text=0x7f02005a;
+        public static final int gachon=0x7f02005b;
+        public static final int ic_launcher=0x7f02005c;
+        public static final int list_divider=0x7f02005d;
+        public static final int listview_background=0x7f02005e;
+        public static final int selector=0x7f02005f;
     }
     public static final class id {
         public static final int Datelist=0x7f08004f;
@@ -775,7 +783,7 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f08002f;
         public static final int action_mode_bar_stub=0x7f08002e;
         public static final int action_mode_close_button=0x7f080022;
-        public static final int action_settings=0x7f08005b;
+        public static final int action_settings=0x7f080060;
         public static final int activity_chooser_view_content=0x7f080023;
         public static final int always=0x7f080011;
         public static final int attendlist=0x7f080050;
@@ -785,8 +793,8 @@ containing a value of this type.
         public static final int confirm=0x7f080048;
         public static final int container=0x7f080053;
         public static final int course=0x7f080057;
-        public static final int dateLayout=0x7f080059;
-        public static final int dateList=0x7f08005a;
+        public static final int dateLayout=0x7f08005e;
+        public static final int dateList=0x7f08005f;
         public static final int default_activity_button=0x7f080026;
         public static final int dialog=0x7f080016;
         public static final int disableHome=0x7f080007;
@@ -801,6 +809,8 @@ containing a value of this type.
         public static final int id=0x7f080045;
         public static final int ifRoom=0x7f080013;
         public static final int image=0x7f080025;
+        public static final int imgViewArrow=0x7f08005d;
+        public static final int imgViewLogo=0x7f08005a;
         public static final int ipTv=0x7f08004b;
         public static final int left_icon=0x7f080031;
         public static final int listMode=0x7f080004;
@@ -824,6 +834,7 @@ containing a value of this type.
         public static final int pw=0x7f080046;
         public static final int radio=0x7f08002d;
         public static final int readResult=0x7f080054;
+        public static final int relativeLayout1=0x7f080059;
         public static final int right_container=0x7f080032;
         public static final int right_icon=0x7f080033;
         public static final int search_badge=0x7f080038;
@@ -847,6 +858,8 @@ containing a value of this type.
         public static final int title=0x7f080029;
         public static final int title_container=0x7f080030;
         public static final int top_action_bar=0x7f08001e;
+        public static final int txtViewDescription=0x7f08005c;
+        public static final int txtViewTitle=0x7f08005b;
         public static final int up=0x7f08001f;
         public static final int useLogo=0x7f08000c;
         public static final int withText=0x7f080015;
@@ -895,25 +908,27 @@ containing a value of this type.
         public static final int fragment_main=0x7f030024;
         public static final int fragment_read=0x7f030025;
         public static final int fragment_write=0x7f030026;
-        public static final int pro_attendance_menu_fragment=0x7f030027;
-        public static final int pro_date_fragment=0x7f030028;
-        public static final int support_simple_spinner_dropdown_item=0x7f030029;
+        public static final int listview_row=0x7f030027;
+        public static final int pro_attendance_menu_fragment=0x7f030028;
+        public static final int pro_date_fragment=0x7f030029;
+        public static final int support_simple_spinner_dropdown_item=0x7f03002a;
     }
     public static final class menu {
         public static final int main=0x7f0c0000;
         public static final int menu_attend=0x7f0c0001;
         public static final int menu_attendencemenu=0x7f0c0002;
-        public static final int menu_login=0x7f0c0003;
-        public static final int menu_membership=0x7f0c0004;
-        public static final int menu_pro_attendance_menu_fragment=0x7f0c0005;
-        public static final int menu_pro_date=0x7f0c0006;
-        public static final int menu_pro_one_attend=0x7f0c0007;
-        public static final int menu_proallattend=0x7f0c0008;
-        public static final int menu_proattendencemenu=0x7f0c0009;
-        public static final int menu_showattendence=0x7f0c000a;
-        public static final int menuattendancemenufragment=0x7f0c000b;
-        public static final int read=0x7f0c000c;
-        public static final int write=0x7f0c000d;
+        public static final int menu_list_view_custom_adapter=0x7f0c0003;
+        public static final int menu_login=0x7f0c0004;
+        public static final int menu_membership=0x7f0c0005;
+        public static final int menu_pro_attendance_menu_fragment=0x7f0c0006;
+        public static final int menu_pro_date=0x7f0c0007;
+        public static final int menu_pro_one_attend=0x7f0c0008;
+        public static final int menu_proallattend=0x7f0c0009;
+        public static final int menu_proattendencemenu=0x7f0c000a;
+        public static final int menu_showattendence=0x7f0c000b;
+        public static final int menuattendancemenufragment=0x7f0c000c;
+        public static final int read=0x7f0c000d;
+        public static final int write=0x7f0c000e;
     }
     public static final class string {
         public static final int abc_action_bar_home_description=0x7f0a0000;
@@ -935,16 +950,17 @@ containing a value of this type.
         public static final int title_activity_attend=0x7f0a0010;
         public static final int title_activity_attendance_menu_fragment=0x7f0a0011;
         public static final int title_activity_attendence_menu=0x7f0a0012;
-        public static final int title_activity_login=0x7f0a0013;
-        public static final int title_activity_membership_form=0x7f0a0014;
-        public static final int title_activity_pro_all_attend=0x7f0a0015;
-        public static final int title_activity_pro_attendence_menu=0x7f0a0016;
-        public static final int title_activity_pro_date_fragment=0x7f0a0017;
-        public static final int title_activity_pro_menu_fragment=0x7f0a0018;
-        public static final int title_activity_pro_one_attend=0x7f0a0019;
-        public static final int title_activity_read=0x7f0a001a;
-        public static final int title_activity_show_attendence=0x7f0a001b;
-        public static final int title_activity_write=0x7f0a001c;
+        public static final int title_activity_list_view_custom_adapter=0x7f0a0013;
+        public static final int title_activity_login=0x7f0a0014;
+        public static final int title_activity_membership_form=0x7f0a0015;
+        public static final int title_activity_pro_all_attend=0x7f0a0016;
+        public static final int title_activity_pro_attendence_menu=0x7f0a0017;
+        public static final int title_activity_pro_date_fragment=0x7f0a0018;
+        public static final int title_activity_pro_menu_fragment=0x7f0a0019;
+        public static final int title_activity_pro_one_attend=0x7f0a001a;
+        public static final int title_activity_read=0x7f0a001b;
+        public static final int title_activity_show_attendence=0x7f0a001c;
+        public static final int title_activity_write=0x7f0a001d;
     }
     public static final class style {
         /** 
@@ -1086,6 +1102,7 @@ containing a value of this type.
         public static final int Widget_AppCompat_ProgressBar=0x7f0b007e;
         public static final int Widget_AppCompat_ProgressBar_Horizontal=0x7f0b007f;
         public static final int Widget_AppCompat_Spinner_DropDown_ActionBar=0x7f0b0080;
+        public static final int btnStyleBeige=0x7f0b0081;
     }
     public static final class styleable {
         /** Attributes that can be used with a ActionBar.

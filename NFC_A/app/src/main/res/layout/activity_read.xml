@@ -3,6 +3,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/back"
     android:orientation="vertical"
     tools:context="com.example.simplenfc.ReadActivity"
     tools:ignore="MergeRootFrame" >
@@ -11,6 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="18dp"
-        android:text=" Scanned Data will appear\n\n"/>
+        android:text="Please Scan NFC Tag on you seat \n\n"/>
 </LinearLayout>
 
