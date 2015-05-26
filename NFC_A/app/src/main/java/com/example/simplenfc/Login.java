@@ -68,6 +68,10 @@ public class Login extends Activity implements OnClickListener {
             // Log.d("onClcik", "" + 4);
 
         }
+        else{
+            Intent tarIntent = new Intent(this, MembershipForm.class);
+            startActivity(tarIntent);
+        }
 
     }
 

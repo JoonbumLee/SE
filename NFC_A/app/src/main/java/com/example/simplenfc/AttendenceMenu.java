@@ -105,6 +105,7 @@ public class AttendenceMenu extends Activity implements OnClickListener {
         for(String course : myBundle.getStringArrayList("course_name_list") ) {
             course_name_list.add(course);
             photos.add("A");
+
         }
         for(String course : myBundle.getStringArrayList("course_id_list") ) {
             course_id_list.add(course);
@@ -118,7 +119,7 @@ public class AttendenceMenu extends Activity implements OnClickListener {
         id = myBundle.getString("userId");
 
 
-        adapter = new ListViewCustomAdapter(this, course_name_list, photos);
+        adapter = new ListViewCustomAdapter(this, course_name_list, course_time_list);
 
         //adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,course_name_list);
         list = (ListView)findViewById(R.id.myList);
