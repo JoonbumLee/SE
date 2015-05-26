@@ -15,5 +15,8 @@
     <string name="title_activity_pro_one_attend">ProOneAttend</string>
     <string name="title_activity_show_attendence">showAttendence</string>
     <string name="title_activity_attendance_menu_fragment">AttendanceMenuFragment</string>
+    <string name="title_activity_pro_date_fragment">ProDateFragment</string>
+    <string name="title_activity_pro_menu_fragment">ProMenuFragment</string>
+    <string name="title_activity_list_view_custom_adapter">ListViewCustomAdapter</string>
 
 </resources>

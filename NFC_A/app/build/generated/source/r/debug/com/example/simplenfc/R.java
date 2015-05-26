@@ -761,7 +761,7 @@ containing a value of this type.
     public static final class id {
         public static final int Datelist=0x7f08004f;
         public static final int Layout=0x7f080043;
-        public static final int ProList=0x7f080051;
+        public static final int ProList=0x7f080052;
         public static final int action_bar=0x7f08001a;
         public static final int action_bar_activity_content=0x7f080000;
         public static final int action_bar_container=0x7f080019;
@@ -775,7 +775,7 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f08002f;
         public static final int action_mode_bar_stub=0x7f08002e;
         public static final int action_mode_close_button=0x7f080022;
-        public static final int action_settings=0x7f080058;
+        public static final int action_settings=0x7f08005b;
         public static final int activity_chooser_view_content=0x7f080023;
         public static final int always=0x7f080011;
         public static final int attendlist=0x7f080050;
@@ -783,8 +783,10 @@ containing a value of this type.
         public static final int checkbox=0x7f08002b;
         public static final int collapseActionView=0x7f080012;
         public static final int confirm=0x7f080048;
-        public static final int container=0x7f080052;
-        public static final int course=0x7f080056;
+        public static final int container=0x7f080053;
+        public static final int course=0x7f080057;
+        public static final int dateLayout=0x7f080059;
+        public static final int dateList=0x7f08005a;
         public static final int default_activity_button=0x7f080026;
         public static final int dialog=0x7f080016;
         public static final int disableHome=0x7f080007;
@@ -807,20 +809,21 @@ containing a value of this type.
         public static final int macTv=0x7f08004a;
         public static final int membership=0x7f080047;
         public static final int middle=0x7f08000f;
-        public static final int myAttendList=0x7f080057;
+        public static final int myAttendList=0x7f080058;
         public static final int myList=0x7f080044;
         public static final int myattend=0x7f080042;
         public static final int name=0x7f08004d;
         public static final int never=0x7f080014;
         public static final int none=0x7f080010;
         public static final int normal=0x7f080005;
+        public static final int pLayout=0x7f080051;
         public static final int phone=0x7f08004e;
         public static final int phoneTv=0x7f08004c;
         public static final int progress_circular=0x7f080034;
         public static final int progress_horizontal=0x7f080035;
         public static final int pw=0x7f080046;
         public static final int radio=0x7f08002d;
-        public static final int readResult=0x7f080053;
+        public static final int readResult=0x7f080054;
         public static final int right_container=0x7f080032;
         public static final int right_icon=0x7f080033;
         public static final int search_badge=0x7f080038;
@@ -838,7 +841,7 @@ containing a value of this type.
         public static final int showHome=0x7f08000a;
         public static final int showTitle=0x7f08000b;
         public static final int split_action_bar=0x7f08001c;
-        public static final int stuattend=0x7f080054;
+        public static final int stuattend=0x7f080055;
         public static final int submit_area=0x7f08003f;
         public static final int tabMode=0x7f080006;
         public static final int title=0x7f080029;
@@ -847,7 +850,7 @@ containing a value of this type.
         public static final int up=0x7f08001f;
         public static final int useLogo=0x7f08000c;
         public static final int withText=0x7f080015;
-        public static final int writeText=0x7f080055;
+        public static final int writeText=0x7f080056;
     }
     public static final class integer {
         public static final int abc_max_action_buttons=0x7f090000;
@@ -892,7 +895,9 @@ containing a value of this type.
         public static final int fragment_main=0x7f030024;
         public static final int fragment_read=0x7f030025;
         public static final int fragment_write=0x7f030026;
-        public static final int support_simple_spinner_dropdown_item=0x7f030027;
+        public static final int pro_attendance_menu_fragment=0x7f030027;
+        public static final int pro_date_fragment=0x7f030028;
+        public static final int support_simple_spinner_dropdown_item=0x7f030029;
     }
     public static final class menu {
         public static final int main=0x7f0c0000;
@@ -900,13 +905,15 @@ containing a value of this type.
         public static final int menu_attendencemenu=0x7f0c0002;
         public static final int menu_login=0x7f0c0003;
         public static final int menu_membership=0x7f0c0004;
-        public static final int menu_pro_one_attend=0x7f0c0005;
-        public static final int menu_proallattend=0x7f0c0006;
-        public static final int menu_proattendencemenu=0x7f0c0007;
-        public static final int menu_showattendence=0x7f0c0008;
-        public static final int menuattendancemenufragment=0x7f0c0009;
-        public static final int read=0x7f0c000a;
-        public static final int write=0x7f0c000b;
+        public static final int menu_pro_attendance_menu_fragment=0x7f0c0005;
+        public static final int menu_pro_date=0x7f0c0006;
+        public static final int menu_pro_one_attend=0x7f0c0007;
+        public static final int menu_proallattend=0x7f0c0008;
+        public static final int menu_proattendencemenu=0x7f0c0009;
+        public static final int menu_showattendence=0x7f0c000a;
+        public static final int menuattendancemenufragment=0x7f0c000b;
+        public static final int read=0x7f0c000c;
+        public static final int write=0x7f0c000d;
     }
     public static final class string {
         public static final int abc_action_bar_home_description=0x7f0a0000;
@@ -932,10 +939,12 @@ containing a value of this type.
         public static final int title_activity_membership_form=0x7f0a0014;
         public static final int title_activity_pro_all_attend=0x7f0a0015;
         public static final int title_activity_pro_attendence_menu=0x7f0a0016;
-        public static final int title_activity_pro_one_attend=0x7f0a0017;
-        public static final int title_activity_read=0x7f0a0018;
-        public static final int title_activity_show_attendence=0x7f0a0019;
-        public static final int title_activity_write=0x7f0a001a;
+        public static final int title_activity_pro_date_fragment=0x7f0a0017;
+        public static final int title_activity_pro_menu_fragment=0x7f0a0018;
+        public static final int title_activity_pro_one_attend=0x7f0a0019;
+        public static final int title_activity_read=0x7f0a001a;
+        public static final int title_activity_show_attendence=0x7f0a001b;
+        public static final int title_activity_write=0x7f0a001c;
     }
     public static final class style {
         /** 

@@ -35,9 +35,9 @@ public class ProOneAttend  extends Activity implements AdapterView.OnItemClickLi
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position,
                             long id) {
-        // ��¥ �� �ϳ��� ��ġ�Ǹ� ��ġ �� ��¥�� �⼮ ����� ����.
+        // 날짜 중 하나가 터치되면 터치 된 날짜의 출석 결과를 전달.
         Intent intent = new Intent(ProOneAttend.this, ProAllAttend.class);
-        intent.putExtra("Attend","����ȣ true");
+        intent.putExtra("Attend","최윤호 true");
         startActivity(intent);
 
     }

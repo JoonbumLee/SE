@@ -125,7 +125,18 @@
             android:name=".WriteActivity"
             android:label="@string/title_activity_write" >
         </activity>
-
+        <activity
+            android:name=".ProDateFragment"
+            android:label="@string/title_activity_pro_date_fragment" >
+        </activity>
+        <activity
+            android:name=".ProMenuFragment"
+            android:label="@string/title_activity_pro_menu_fragment" >
+        </activity>
+        <activity
+            android:name=".ListViewCustomAdapter"
+            android:label="@string/title_activity_list_view_custom_adapter" >
+        </activity>
     </application>
 
 </manifest>
