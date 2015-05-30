@@ -32,7 +32,8 @@ public class Login extends Activity implements OnClickListener {
 	private String id, pw, check = "false";
 	ArrayList<String> course_name_list;
 	ArrayList<String> course_id_list;
-	ArrayList<String> course_time_list; 
+	ArrayList<String> course_time_list;
+	private boolean debug = true;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +68,9 @@ public class Login extends Activity implements OnClickListener {
 			// Log.d(getClass().getName(), check);
 			// Log.d("onClcik", "" + 4);
 
+		} else {
+			Intent tarIntent = new Intent(this, MembershipForm.class);
+			startActivity(tarIntent);
 		}
 
 	}
@@ -92,45 +96,47 @@ public class Login extends Activity implements OnClickListener {
 		}
 
 		@Override
-		protected void onPostExecute(Void result) {
-			// TODO Auto-generated method stub
-			super.onPostExecute(result);
+        protected void onPostExecute(Void result) {
+            // TODO Auto-generated method stub
+            super.onPostExecute(result);
 
-			// Log.d("5", check);
-			if (check.equalsIgnoreCase("true")) {
-				if (id.startsWith("1")) {
-					Bundle myBundle = new Bundle();
-					myBundle.putStringArrayList("course_name_list", course_name_list);
-					myBundle.putStringArrayList("course_id_list", course_id_list);
-					myBundle.putStringArrayList("course_time_list", course_time_list);
-					myBundle.putString("userId",id);
-					Intent myIntent = new Intent(Login.this,
-							ProAttendenceMenu.class);
-					myIntent.putExtras(myBundle);
-					startActivity(myIntent);
-				} else {
-					Intent myIntent = new Intent(Login.this,
-							AttendenceMenu.class);
-					Bundle myBundle = new Bundle();
-					myBundle.putStringArrayList("course_name_list", course_name_list);
-					myBundle.putStringArrayList("course_id_list", course_id_list);
-					myBundle.putStringArrayList("course_time_list", course_time_list);
-					myBundle.putString("userId",id);
-					myIntent.putExtras(myBundle);
-					startActivity(myIntent);
-				}
-			}
+            // Log.d("5", check);
+            
+            if (check.equalsIgnoreCase("true")) {
+                if (id.startsWith("1")) {
+                    Bundle myBundle = new Bundle();
+                    myBundle.putStringArrayList("course_name_list", course_name_list);
+                    myBundle.putStringArrayList("course_id_list", course_id_list);
+                    myBundle.putStringArrayList("course_time_list", course_time_list);
+                    myBundle.putString("userId",id);
+                    Intent myIntent = new Intent(Login.this,
+                            ProAttendenceMenu.class);
+                    myIntent.putExtras(myBundle);
+                    startActivity(myIntent);
+                } else {
+                    Intent myIntent = new Intent(Login.this,
+                            AttendenceMenu.class);
+                    Bundle myBundle = new Bundle();
+                    myBundle.putStringArrayList("course_name_list", course_name_list);
+                    myBundle.putStringArrayList("course_id_list", course_id_list);
+                    myBundle.putStringArrayList("course_time_list", course_time_list);
+                    myBundle.putString("userId",id);
+                    myIntent.putExtras(myBundle);
+                    startActivity(myIntent);
+                }
+            }
 
-			else {
-				ID.setText("");
-				PW.setText("");
-				Toast.makeText(getApplication(), "Invalid, tpye again!",
-						Toast.LENGTH_SHORT).show();
+            else {
+                ID.setText("");
+                PW.setText("");
+                Toast.makeText(getApplication(), "Invalid, tpye again!",
+                        Toast.LENGTH_SHORT).show();
 
-			}
-		}
+            }
+            
+        }
 
-		// ½ÇÁ¦ Àü¼ÛÇÏ´Â ºÎºĞ
+		// ï¿½ë–ï¿½ì £ ï¿½ìŸ¾ï¿½ë„šï¿½ë¸¯ï¿½ë’— éºï¿½éºï¿½
 		public void checkDB() {
 			ArrayList<String> Typed = new ArrayList<String>();
 
@@ -144,15 +150,15 @@ public class Login extends Activity implements OnClickListener {
 			post.add(new BasicNameValuePair("ID", Typed.get(0).toString()));
 			post.add(new BasicNameValuePair("PW", Typed.get(1).toString()));
 
-			// ¿¬°á HttpClient °´Ã¼ »ı¼º
+			// ï¿½ë¿°å¯ƒï¿½ HttpClient åª›ì•¹ê»œ ï¿½ê¹®ï¿½ê½¦
 			HttpClient client = new DefaultHttpClient();
 
-			// °´Ã¼ ¿¬°á ¼³Á¤ ºÎºĞ, ¿¬°á ÃÖ´ë½Ã°£ µîµî
+			// åª›ì•¹ê»œ ï¿½ë¿°å¯ƒï¿½ ï¿½ê½•ï¿½ì ™ éºï¿½éºï¿½, ï¿½ë¿°å¯ƒï¿½ ï§¤ì’•ï¿½ï¿½ë–†åª›ï¿½ ï¿½ë²‘ï¿½ë²‘
 			HttpParams params = client.getParams();
 			HttpConnectionParams.setConnectionTimeout(params, 5000);
 			HttpConnectionParams.setSoTimeout(params, 5000);
 
-			// Post°´Ã¼ »ı¼º
+			// Poståª›ì•¹ê»œ ï¿½ê¹®ï¿½ê½¦
 			HttpPost httpPost = new HttpPost("http://jdrive.synology.me"
 					+ "/checkLogin.php?");
 			check = null;
@@ -167,11 +173,10 @@ public class Login extends Activity implements OnClickListener {
 				check = EntityUtils.toString((res.getEntity()));
 				Log.d("Reulst", check);
 				String[] split = check.split(" ");
-				
+
 				if (split[0].trim().equalsIgnoreCase("true")) {
 					check = split[0];
-					for (int j = 1; j < split.length; j++) 
-					{
+					for (int j = 1; j < split.length; j++) {
 						String[] list = split[j].split("/");
 						course_name_list.add(list[0]);
 						course_id_list.add(list[1]);

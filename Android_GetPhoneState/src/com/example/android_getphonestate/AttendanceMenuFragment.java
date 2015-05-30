@@ -28,57 +28,54 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 public class AttendanceMenuFragment extends Fragment {
-	ListView attendList ;
+	ListView attendList;
 	ArrayAdapter<String> adapter2;
 	int position = 0;
 
 	ArrayList<String> myAttend;
 	String userID, attend = "";
 	LinearLayout activityList;
-	
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		Log.d( getClass().getName(), " onCreateView() enterance ");
-		View v = inflater.inflate( R.layout.attendance_menu_fragment , container, false);
-		//getActivity().setVisible(View.GONE);
-		
+		Log.d(getClass().getName(), " onCreateView() enterance ");
+		View v = inflater.inflate(R.layout.attendance_menu_fragment, container,
+				false);
+		// getActivity().setVisible(View.GONE);
+
 		return v;
 	}
-	
-	
 
 	@Override
 	public void onStart() {
 		// TODO Auto-generated method stub
-		//txt = (TextView) getActivity().findViewById(R.id.course);
-		
+		// txt = (TextView) getActivity().findViewById(R.id.course);
+
 		super.onStart();
 		position = ((AttendenceMenu) getActivity()).Position;
 		userID = ((AttendenceMenu) getActivity()).id;
 		myAttend = new ArrayList<String>();
-		
-		attendList = (ListView)getActivity().findViewById(R.id.myAttendList);
-		
-		
-		//for(String course : course_list)
-		//{
-		//	Log.d("course_list", course);
-		//}
-		//for(String course : ((AttendenceMenu) getActivity()).courseList)
-		//{
-		//	Log.d("Activity courseList",course);
-		//}
-		//Log.d("position = ", position+"");
-		
+
+		attendList = (ListView) getActivity().findViewById(R.id.myAttendList);
+
+		// for(String course : course_list)
+		// {
+		// Log.d("course_list", course);
+		// }
+		// for(String course : ((AttendenceMenu) getActivity()).courseList)
+		// {
+		// Log.d("Activity courseList",course);
+		// }
+		// Log.d("position = ", position+"");
+
 		// adapter = new
 		// ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,);
 		// menulist = (ListView)findViewById(R.id.myList);
-		//txt.setText(course_list.get(position).toString());
+		// txt.setText(course_list.get(position).toString());
 		new CheckAttend().execute();
-		
-		
+
 	}
 
 	@Override
@@ -101,49 +98,51 @@ public class AttendanceMenuFragment extends Fragment {
 			// TODO Auto-generated method stub
 			super.onPreExecute();
 
-
 		}
 
 		@Override
 		protected void onPostExecute(Void result) {
 			// TODO Auto-generated method stub
 			super.onPostExecute(result);
-			for(String attend : myAttend)
-			{
-				Log.d("attend",attend);
+			for (String attend : myAttend) {
+				Log.d("attend", attend);
 			}
-			
-			
-			adapter2 = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,myAttend);
-			//if(attendList == null)
-			//	Log.d("list","null");
-			//if(adapter2 == null)
-			//	Log.d("adapter2","null");
-				
-			activityList = (LinearLayout)getActivity().findViewById(R.id.Layout);
+
+			adapter2 = new ArrayAdapter<String>(getActivity(),
+					android.R.layout.simple_list_item_1, myAttend);
+			// if(attendList == null)
+			// Log.d("list","null");
+			// if(adapter2 == null)
+			// Log.d("adapter2","null");
+
+			activityList = (LinearLayout) getActivity().findViewById(
+					R.id.Layout);
 			activityList.setVisibility(View.GONE);
-		    attendList.setAdapter(adapter2);
+			attendList.setAdapter(adapter2);
 			// Log.d("5", check);
 
 		}
 
-		// ½ÇÁ¦ Àü¼ÛÇÏ´Â ºÎºĞ
+		// ï¿½ë–ï¿½ì £ ï¿½ìŸ¾ï¿½ë„šï¿½ë¸¯ï¿½ë’— éºï¿½éºï¿½
 		public void checkDB() {
 
 			ArrayList<NameValuePair> post = new ArrayList<NameValuePair>();
 			post.add(new BasicNameValuePair("U_ID", userID));
-			post.add(new BasicNameValuePair("C_ID", ((AttendenceMenu) getActivity()).course_id_list.get(position).toString()));
-			Log.d("course_Id",((AttendenceMenu) getActivity()).course_id_list.get(position).toString());
-			
-			// ¿¬°á HttpClient °´Ã¼ »ı¼º
+			post.add(new BasicNameValuePair("C_ID",
+					((AttendenceMenu) getActivity()).course_id_list.get(
+							position).toString()));
+			Log.d("course_Id", ((AttendenceMenu) getActivity()).course_id_list
+					.get(position).toString());
+
+			// ï¿½ë¿°å¯ƒï¿½ HttpClient åª›ì•¹ê»œ ï¿½ê¹®ï¿½ê½¦
 			HttpClient client = new DefaultHttpClient();
 
-			// °´Ã¼ ¿¬°á ¼³Á¤ ºÎºĞ, ¿¬°á ÃÖ´ë½Ã°£ µîµî
+			// åª›ì•¹ê»œ ï¿½ë¿°å¯ƒï¿½ ï¿½ê½•ï¿½ì ™ éºï¿½éºï¿½, ï¿½ë¿°å¯ƒï¿½ ï§¤ì’•ï¿½ï¿½ë–†åª›ï¿½ ï¿½ë²‘ï¿½ë²‘
 			HttpParams params = client.getParams();
 			HttpConnectionParams.setConnectionTimeout(params, 5000);
 			HttpConnectionParams.setSoTimeout(params, 5000);
 
-			// Post°´Ã¼ »ı¼º
+			// Poståª›ì•¹ê»œ ï¿½ê¹®ï¿½ê½¦
 			HttpPost httpPost = new HttpPost("http://jdrive.synology.me"
 					+ "/checkAttendance.php?");
 			try {
@@ -157,17 +156,18 @@ public class AttendanceMenuFragment extends Fragment {
 				check = EntityUtils.toString((res.getEntity()));
 				Log.d("Reulst", check);
 				String[] split = check.split(" ");
-				Log.d("before if",split[0]);
+				Log.d("before if", split[0]);
 				if (!(split[0].trim().equalsIgnoreCase("noData"))) {
-					
+
 					for (int j = 1; j < split.length; j++) {
-						Log.d("beforeSpilit",split[j]);
+						Log.d("beforeSpilit", split[j]);
 						String[] attend = split[j].split("/");
-						Log.d("attend[0],attend[1]", "Date :" +attend[0] + " " + "point "+attend[1]);
-						myAttend.add("Date : " + attend[0].trim()+" "+"point : "+attend[1].trim()); 
+						Log.d("attend[0],attend[1]", "Date :" + attend[0] + " "
+								+ "point " + attend[1]);
+						myAttend.add("Date : " + attend[0].trim() + " "
+								+ "point : " + attend[1].trim());
 					}
-				} 
-				else
+				} else
 					myAttend.add("noData");
 
 			} catch (ClientProtocolException e) {

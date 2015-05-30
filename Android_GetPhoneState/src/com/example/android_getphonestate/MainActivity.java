@@ -23,81 +23,79 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity implements OnClickListener {
 
-	Button btn1;
-	TextView tv1, tv2, tv3;
-	private static final String LOG_TAG = null;
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-		btn1 = (Button)findViewById(R.id.macBtn);
-		tv1 = (TextView)findViewById(R.id.macTv);
-		tv2 = (TextView)findViewById(R.id.ipTv);
-		tv3 =(TextView)findViewById(R.id.phoneTv);
-		
-		btn1.setOnClickListener(this);
-	}
+    Button btn1;
+    TextView tv1, tv2, tv3;
+    private static final String LOG_TAG = null;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        btn1 = (Button)findViewById(R.id.macBtn);
+        tv1 = (TextView)findViewById(R.id.macTv);
+        tv2 = (TextView)findViewById(R.id.ipTv);
+        tv3 =(TextView)findViewById(R.id.phoneTv);
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
+        btn1.setOnClickListener(this);
+    }
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
 
-	@Override
-	public void onClick(View v) {
-		if(v.getId() == btn1.getId())
-		{
-			getCurrentMacAddress();
-			getLocalIpAddress();
-			getLocalPhoneNumber();
-		}
-	}
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
-	public void getCurrentMacAddress(){  
-		String macAddress="";  
-		boolean bIsWifiOff=true;  
+    @Override
+    public void onClick(View v) {
+        if(v.getId() == btn1.getId())
+        {
+            getCurrentMacAddress();
+            getLocalIpAddress();
+            getLocalPhoneNumber();
+        }
+    }
 
-		WifiManager wfManager = (WifiManager)getSystemService(Context.WIFI_SERVICE);
+    public void getCurrentMacAddress(){
+        String macAddress="";
+        boolean bIsWifiOff=true;
 
-		WifiInfo wfInfo = wfManager.getConnectionInfo();  
-		macAddress = wfInfo.getMacAddress();  
+        WifiManager wfManager = (WifiManager)getSystemService(Context.WIFI_SERVICE);
 
-		tv1.setText(macAddress+"");
-	}
+        WifiInfo wfInfo = wfManager.getConnectionInfo();
+        macAddress = wfInfo.getMacAddress();
 
-
-	public void getLocalIpAddress()
-	{
-		try {
-			for (Enumeration en = NetworkInterface.getNetworkInterfaces(); en.hasMoreElements();) {
-				NetworkInterface intf = (NetworkInterface)en.nextElement();
-				for (Enumeration enumIpAddr = intf.getInetAddresses(); enumIpAddr.hasMoreElements();) {
-					InetAddress inetAddress = (InetAddress)enumIpAddr.nextElement();
-					if (!inetAddress.isLoopbackAddress()) {
-						tv2.setText(inetAddress.getHostAddress().toString());
-					}
-				}
-			}
-		} catch (SocketException ex) {
-			Log.e(LOG_TAG, ex.toString());
-		}
-	}
-	public void getLocalPhoneNumber(){ //��ȭ��ȣ
-		TelephonyManager manager = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
-		tv3.setText(manager.getLine1Number());
-	}
+        tv1.setText(macAddress+"");
+    }
+    public void getLocalIpAddress()
+    {
+        try {
+            for (Enumeration en = NetworkInterface.getNetworkInterfaces(); en.hasMoreElements();) {
+                NetworkInterface intf = (NetworkInterface)en.nextElement();
+                for (Enumeration enumIpAddr = intf.getInetAddresses(); enumIpAddr.hasMoreElements();) {
+                    InetAddress inetAddress = (InetAddress)enumIpAddr.nextElement();
+                    if (!inetAddress.isLoopbackAddress()) {
+                        tv2.setText(inetAddress.getHostAddress().toString());
+                    }
+                }
+            }
+        } catch (SocketException ex) {
+            Log.e(LOG_TAG, ex.toString());
+        }
+    }
+    public void getLocalPhoneNumber(){ //占쏙옙화占쏙옙호
+        TelephonyManager manager = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+        tv3.setText(manager.getLine1Number());
+    }
 }

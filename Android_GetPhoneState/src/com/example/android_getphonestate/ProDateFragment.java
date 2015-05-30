@@ -32,19 +32,18 @@ import android.widget.AdapterView.OnItemClickListener;
 
 public class ProDateFragment extends Fragment {
 	int position = 0;
-	String userID ="",date="";
+	String userID = "", date = "";
 	ListView AttendList;
 	ArrayList<String> StAttend;
 	ArrayAdapter<String> adapter3;
 	LinearLayout activityList;
-	
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		Log.d(getClass().getName(), " onCreateView() enterance ");
-		View v = inflater.inflate(R.layout.pro_date_fragment,
-				container, false);
+		View v = inflater.inflate(R.layout.pro_date_fragment, container, false);
 		// getActivity().setVisible(View.GONE);
 
 		return v;
@@ -56,15 +55,13 @@ public class ProDateFragment extends Fragment {
 
 		super.onStart();
 		date = ((ProAttendenceMenu) getActivity()).Date;
-		position = ((ProAttendenceMenu)getActivity()).Position;
+		position = ((ProAttendenceMenu) getActivity()).Position;
 		userID = ((ProAttendenceMenu) getActivity()).user_id;
-		
-		
+
 		StAttend = new ArrayList<String>();
 
 		AttendList = (ListView) getActivity().findViewById(R.id.dateList);
 
-		
 		// for(String course : course_list)
 		// {
 		// Log.d("course_list", course);
@@ -82,6 +79,7 @@ public class ProDateFragment extends Fragment {
 		new CheckAttend().execute();
 
 	}
+
 	@Override
 	public void onStop() {
 		// TODO Auto-generated method stub
@@ -127,7 +125,7 @@ public class ProDateFragment extends Fragment {
 
 		}
 
-		// ½ÇÁ¦ Àü¼ÛÇÏ´Â ºÎºĞ
+		// ï¿½ë–ï¿½ì £ ï¿½ìŸ¾ï¿½ë„šï¿½ë¸¯ï¿½ë’— éºï¿½éºï¿½
 		public void checkDB() {
 
 			ArrayList<NameValuePair> post = new ArrayList<NameValuePair>();
@@ -135,16 +133,16 @@ public class ProDateFragment extends Fragment {
 			post.add(new BasicNameValuePair("C_ID",
 					((ProAttendenceMenu) getActivity()).course_id_list.get(
 							position).toString()));
-			post.add(new BasicNameValuePair("Date",date));
-			// ¿¬°á HttpClient °´Ã¼ »ı¼º
+			post.add(new BasicNameValuePair("Date", date));
+			// ï¿½ë¿°å¯ƒï¿½ HttpClient åª›ì•¹ê»œ ï¿½ê¹®ï¿½ê½¦
 			HttpClient client = new DefaultHttpClient();
 
-			// °´Ã¼ ¿¬°á ¼³Á¤ ºÎºĞ, ¿¬°á ÃÖ´ë½Ã°£ µîµî
+			// åª›ì•¹ê»œ ï¿½ë¿°å¯ƒï¿½ ï¿½ê½•ï¿½ì ™ éºï¿½éºï¿½, ï¿½ë¿°å¯ƒï¿½ ï§¤ì’•ï¿½ï¿½ë–†åª›ï¿½ ï¿½ë²‘ï¿½ë²‘
 			HttpParams params = client.getParams();
 			HttpConnectionParams.setConnectionTimeout(params, 5000);
 			HttpConnectionParams.setSoTimeout(params, 5000);
 
-			// Post°´Ã¼ »ı¼º
+			// Poståª›ì•¹ê»œ ï¿½ê¹®ï¿½ê½¦
 			HttpPost httpPost = new HttpPost("http://jdrive.synology.me"
 					+ "/checkDateAttend.php?");
 			try {
@@ -161,12 +159,12 @@ public class ProDateFragment extends Fragment {
 				Log.d("before if", split[0]);
 				if (!(split[0].trim().equalsIgnoreCase("noData"))) {
 
-					for (int j = 1; j < split.length; j++)
-					{
+					for (int j = 1; j < split.length; j++) {
 						String[] txt = split[j].split("/");
-						if(!(txt[2].startsWith("1")))
-						StAttend.add("Date : " + txt[0] + " Name : " +txt[1]
-								+ " U_Id : " + txt[2] + " Point : " +txt[3] );
+						if (!(txt[2].startsWith("1")))
+							StAttend.add("Date : " + txt[0] + " Name : "
+									+ txt[1] + " U_Id : " + txt[2]
+									+ " Point : " + txt[3]);
 					}
 				} else
 					StAttend.add("noData");

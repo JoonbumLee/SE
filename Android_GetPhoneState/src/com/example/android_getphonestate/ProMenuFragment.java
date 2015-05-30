@@ -1,5 +1,6 @@
 package com.example.android_getphonestate;
 
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -29,153 +30,153 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 
 public class ProMenuFragment extends Fragment{
-	ListView dateList;
-	ArrayAdapter<String> adapter3;
-	int position = 0;
-	ArrayList<String> course_list;
-	ArrayList<String> myAttend;
-	String userID= "", attend = "";
-	LinearLayout activityList;
+    ListView dateList;
+    ArrayAdapter<String> adapter3;
+    int position = 0;
+    ArrayList<String> course_list;
+    ArrayList<String> myAttend;
+    String userID= "", attend = "";
+    LinearLayout activityList;
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
-		Log.d(getClass().getName(), " onCreateView() enterance ");
-		View v = inflater.inflate(R.layout.pro_attendance_menu_fragment, container,
-				false);
-		// getActivity().setVisible(View.GONE);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // TODO Auto-generated method stub
+        Log.d(getClass().getName(), " onCreateView() enterance ");
+        View v = inflater.inflate(R.layout.pro_attendance_menu_fragment, container,
+                false);
+        // getActivity().setVisible(View.GONE);
 
-		return v;
-	}
+        return v;
+    }
 
-	@Override
-	public void onStart() {
-		// TODO Auto-generated method stub
-		// txt = (TextView) getActivity().findViewById(R.id.course);
+    @Override
+    public void onStart() {
+        // TODO Auto-generated method stub
+        // txt = (TextView) getActivity().findViewById(R.id.course);
 
-		super.onStart();
-		position = ((ProAttendenceMenu) getActivity()).Position;
-		userID = ((ProAttendenceMenu) getActivity()).user_id;
-		myAttend = new ArrayList<String>();
+        super.onStart();
+        position = ((ProAttendenceMenu) getActivity()).Position;
+        userID = ((ProAttendenceMenu) getActivity()).user_id;
+        myAttend = new ArrayList<String>();
 
-		dateList = (ListView) getActivity().findViewById(R.id.myAttendList);
+        dateList = (ListView) getActivity().findViewById(R.id.myAttendList);
 
-		dateList.setOnItemClickListener(new OnItemClickListener() {
-				@Override
-				public void onItemClick(AdapterView<?> parent, View view,
-						int position, long id) {
-					// TODO Auto-generated method stub
-					Log.d("position",myAttend.get(position).toString());
-					((ProAttendenceMenu)getActivity()).dateAttendance(myAttend.get(position).toString());
-					
-				}
-		});
-		// for(String course : course_list)
-		// {
-		// Log.d("course_list", course);
-		// }
-		// for(String course : ((AttendenceMenu) getActivity()).courseList)
-		// {
-		// Log.d("Activity courseList",course);
-		// }
-		// Log.d("position = ", position+"");
+        dateList.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                // TODO Auto-generated method stub
+                Log.d("position",myAttend.get(position).toString());
+                ((ProAttendenceMenu)getActivity()).dateAttendance(myAttend.get(position).toString());
 
-		// adapter = new
-		// ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,);
-		// menulist = (ListView)findViewById(R.id.myList);
-		// txt.setText(course_list.get(position).toString());
-		new CheckAttend().execute();
+            }
+        });
+        // for(String course : course_list)
+        // {
+        // Log.d("course_list", course);
+        // }
+        // for(String course : ((AttendenceMenu) getActivity()).courseList)
+        // {
+        // Log.d("Activity courseList",course);
+        // }
+        // Log.d("position = ", position+"");
 
-	}
-	@Override
-	public void onStop() {
-		// TODO Auto-generated method stub
-		super.onStop();
-		activityList.setVisibility(View.VISIBLE);
-	}
+        // adapter = new
+        // ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,);
+        // menulist = (ListView)findViewById(R.id.myList);
+        // txt.setText(course_list.get(position).toString());
+        new CheckAttend().execute();
 
-	public class CheckAttend extends AsyncTask<Void, Void, Void> {
-		ArrayList<String> Typed = new ArrayList<String>();
+    }
+    @Override
+    public void onStop() {
+        // TODO Auto-generated method stub
+        super.onStop();
+        activityList.setVisibility(View.VISIBLE);
+    }
 
-		protected Void doInBackground(Void... unused) {
-			checkDB();
-			return null;
-		}
+    public class CheckAttend extends AsyncTask<Void, Void, Void> {
+        ArrayList<String> Typed = new ArrayList<String>();
 
-		@Override
-		protected void onPreExecute() {
-			// TODO Auto-generated method stub
-			super.onPreExecute();
+        protected Void doInBackground(Void... unused) {
+            checkDB();
+            return null;
+        }
 
-		}
+        @Override
+        protected void onPreExecute() {
+            // TODO Auto-generated method stub
+            super.onPreExecute();
 
-		@Override
-		protected void onPostExecute(Void result) {
-			// TODO Auto-generated method stub
-			super.onPostExecute(result);
-			for (String attend : myAttend) {
-				Log.d("attend", attend);
-			}
+        }
 
-			adapter3 = new ArrayAdapter<String>(getActivity(),
-					android.R.layout.simple_list_item_1, myAttend);
-			// if(attendList == null)
-			// Log.d("list","null");
-			// if(adapter2 == null)
-			// Log.d("adapter2","null");
+        @Override
+        protected void onPostExecute(Void result) {
+            // TODO Auto-generated method stub
+            super.onPostExecute(result);
+            for (String attend : myAttend) {
+                Log.d("attend", attend);
+            }
 
-			activityList = (LinearLayout) getActivity().findViewById(
-					R.id.pLayout);
-			activityList.setVisibility(View.GONE);
-			dateList.setAdapter(adapter3);
-			// Log.d("5", check);
+            adapter3 = new ArrayAdapter<String>(getActivity(),
+                    android.R.layout.simple_list_item_1, myAttend);
+            // if(attendList == null)
+            // Log.d("list","null");
+            // if(adapter2 == null)
+            // Log.d("adapter2","null");
 
-		}
+            activityList = (LinearLayout) getActivity().findViewById(
+                    R.id.pLayout);
+            activityList.setVisibility(View.GONE);
+            dateList.setAdapter(adapter3);
+            // Log.d("5", check);
 
-		// Ω«¡¶ ¿¸º€«œ¥¬ ∫Œ∫–
-		public void checkDB() {
+        }
 
-			ArrayList<NameValuePair> post = new ArrayList<NameValuePair>();
-			post.add(new BasicNameValuePair("U_ID", userID));
-			post.add(new BasicNameValuePair("C_ID", ((ProAttendenceMenu)getActivity()).course_id_list.get(position).toString()));
-			// ø¨∞· HttpClient ∞¥√º ª˝º∫
-			HttpClient client = new DefaultHttpClient();
+        // ÔøΩÎñéÔøΩÏ†£ ÔøΩÏüæÔøΩÎÑöÔøΩÎ∏ØÔøΩÎíó ÈÅ∫ÔøΩÈÅ∫ÔøΩ
+        public void checkDB() {
 
-			// ∞¥√º ø¨∞· º≥¡§ ∫Œ∫–, ø¨∞· √÷¥ÎΩ√∞£ µÓµÓ
-			HttpParams params = client.getParams();
-			HttpConnectionParams.setConnectionTimeout(params, 5000);
-			HttpConnectionParams.setSoTimeout(params, 5000);
+            ArrayList<NameValuePair> post = new ArrayList<NameValuePair>();
+            post.add(new BasicNameValuePair("U_ID", userID));
+            post.add(new BasicNameValuePair("C_ID", ((ProAttendenceMenu)getActivity()).course_id_list.get(position).toString()));
+            // ÔøΩÎø∞ÂØÉÔøΩ HttpClient Â™õÏïπÍªú ÔøΩÍπÆÔøΩÍΩ¶
+            HttpClient client = new DefaultHttpClient();
 
-			// Post∞¥√º ª˝º∫
-			HttpPost httpPost = new HttpPost("http://jdrive.synology.me"
-					+ "/checkDate.php?");
-			try {
-				UrlEncodedFormEntity entity = new UrlEncodedFormEntity(post,
-						"utf-8");
-				httpPost.setEntity(entity);
+            // Â™õÏïπÍªú ÔøΩÎø∞ÂØÉÔøΩ ÔøΩÍΩïÔøΩÏ†ô ÈÅ∫ÔøΩÈÅ∫ÔøΩ, ÔøΩÎø∞ÂØÉÔøΩ Ôß§ÏíïÔøΩÔøΩÎñÜÂ™õÔøΩ ÔøΩÎ≤ëÔøΩÎ≤ë
+            HttpParams params = client.getParams();
+            HttpConnectionParams.setConnectionTimeout(params, 5000);
+            HttpConnectionParams.setSoTimeout(params, 5000);
 
-				// return EntityUtils.getContentCharSet(entity);
-				String check = "";
-				HttpResponse res = client.execute(httpPost);
-				check = EntityUtils.toString((res.getEntity()));
-				Log.d("Reulst", check);
-				String[] split = check.split(" ");
-				Log.d("before if", split[0]);
-				if (!(split[0].trim().equalsIgnoreCase("noData"))) {
+            // PostÂ™õÏïπÍªú ÔøΩÍπÆÔøΩÍΩ¶
+            HttpPost httpPost = new HttpPost("http://jdrive.synology.me"
+                    + "/checkDate.php?");
+            try {
+                UrlEncodedFormEntity entity = new UrlEncodedFormEntity(post,
+                        "utf-8");
+                httpPost.setEntity(entity);
 
-					for (int j = 1; j < split.length; j++) {
-						myAttend.add(split[j]);
-					}
-				} else
-					myAttend.add("noData");
+                // return EntityUtils.getContentCharSet(entity);
+                String check = "";
+                HttpResponse res = client.execute(httpPost);
+                check = EntityUtils.toString((res.getEntity()));
+                Log.d("Reulst", check);
+                String[] split = check.split(" ");
+                Log.d("before if", split[0]);
+                if (!(split[0].trim().equalsIgnoreCase("noData"))) {
 
-			} catch (ClientProtocolException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
+                    for (int j = 1; j < split.length; j++) {
+                        myAttend.add(split[j]);
+                    }
+                } else
+                    myAttend.add("noData");
 
-	}
+            } catch (ClientProtocolException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
 }
