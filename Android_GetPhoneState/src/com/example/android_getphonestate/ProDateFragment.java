@@ -61,6 +61,11 @@ public class ProDateFragment extends Fragment {
 		date = ((ProAttendenceMenu) getActivity()).Date;
 		position = ((ProAttendenceMenu) getActivity()).Position;
 		userID = ((ProAttendenceMenu) getActivity()).user_id;
+<<<<<<< HEAD
+=======
+
+		StAttend = new ArrayList<String>();
+>>>>>>> a450caae1bc423f10a32daf162dfc56f0c98f2da
 
 		StAttend = new ArrayList<String>();
 		
@@ -84,8 +89,11 @@ public class ProDateFragment extends Fragment {
 
 	}
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> a450caae1bc423f10a32daf162dfc56f0c98f2da
 	@Override
 	public void onStop() {
 		// TODO Auto-generated method stub
@@ -131,7 +139,10 @@ public class ProDateFragment extends Fragment {
 
 		}
 
+<<<<<<< HEAD
 		// 占쎈뼄占쎌젫 占쎌읈占쎈꽊占쎈릭占쎈뮉 �겫占썽겫占�
+=======
+>>>>>>> a450caae1bc423f10a32daf162dfc56f0c98f2da
 		public void checkDB() {
 
 			ArrayList<NameValuePair> post = new ArrayList<NameValuePair>();
@@ -140,15 +151,24 @@ public class ProDateFragment extends Fragment {
 					((ProAttendenceMenu) getActivity()).course_id_list.get(
 							position).toString()));
 			post.add(new BasicNameValuePair("Date", date));
+<<<<<<< HEAD
 			// 占쎈염野껓옙 HttpClient 揶쏆빘猿� 占쎄문占쎄쉐
 			HttpClient client = new DefaultHttpClient();
 
 			// 揶쏆빘猿� 占쎈염野껓옙 占쎄퐬占쎌젟 �겫占썽겫占�, 占쎈염野껓옙 筌ㅼ뮆占쏙옙�뻻揶쏉옙 占쎈쾻占쎈쾻
+=======
+
+			HttpClient client = new DefaultHttpClient();
+
+>>>>>>> a450caae1bc423f10a32daf162dfc56f0c98f2da
 			HttpParams params = client.getParams();
 			HttpConnectionParams.setConnectionTimeout(params, 5000);
 			HttpConnectionParams.setSoTimeout(params, 5000);
 
+<<<<<<< HEAD
 			// Post揶쏆빘猿� 占쎄문占쎄쉐
+=======
+>>>>>>> a450caae1bc423f10a32daf162dfc56f0c98f2da
 			HttpPost httpPost = new HttpPost("http://jdrive.synology.me"
 					+ "/checkDateAttend.php?");
 			try {

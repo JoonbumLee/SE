@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+<<<<<<< HEAD
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
@@ -8,5 +9,15 @@
 	<classpathentry exported="true" kind="lib" path="C:/Users/형진/Downloads/guava-18.0.zip"/>
 	<classpathentry exported="true" kind="lib" path="C:/Users/형진/Desktop/gg/android-support-v7-appcompat.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/Users/형진/Desktop/gg/support-v4-18.0.0.jar"/>
+=======
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/Documents/카카오톡 받은 파일/guava-18.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/Documents/카카오톡 받은 파일/gg/android-support-v7-appcompat.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/Documents/카카오톡 받은 파일/gg/support-v4-18.0.0.jar"/>
+>>>>>>> a450caae1bc423f10a32daf162dfc56f0c98f2da
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

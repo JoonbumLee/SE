@@ -123,7 +123,10 @@ public class AttendanceMenuFragment extends Fragment {
 
 		}
 
+<<<<<<< HEAD
 		// �떎�젣 �쟾�넚�븯�뒗 遺�遺�
+=======
+>>>>>>> a450caae1bc423f10a32daf162dfc56f0c98f2da
 		public void checkDB() {
 
 			ArrayList<NameValuePair> post = new ArrayList<NameValuePair>();
@@ -134,6 +137,7 @@ public class AttendanceMenuFragment extends Fragment {
 			Log.d("course_Id", ((AttendenceMenu) getActivity()).course_id_list
 					.get(position).toString());
 
+<<<<<<< HEAD
 			// �뿰寃� HttpClient 媛앹껜 �깮�꽦
 			HttpClient client = new DefaultHttpClient();
 
@@ -143,6 +147,14 @@ public class AttendanceMenuFragment extends Fragment {
 			HttpConnectionParams.setSoTimeout(params, 5000);
 
 			// Post媛앹껜 �깮�꽦
+=======
+			HttpClient client = new DefaultHttpClient();
+
+			HttpParams params = client.getParams();
+			HttpConnectionParams.setConnectionTimeout(params, 5000);
+			HttpConnectionParams.setSoTimeout(params, 5000);
+			
+>>>>>>> a450caae1bc423f10a32daf162dfc56f0c98f2da
 			HttpPost httpPost = new HttpPost("http://jdrive.synology.me"
 					+ "/checkAttendance.php?");
 			try {

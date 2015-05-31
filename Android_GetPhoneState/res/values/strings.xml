@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+<<<<<<< HEAD
     <string name="app_name">HelloWorld</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
@@ -9,5 +10,26 @@
     <string name="stop_service">Stop Service</string>
     <string name="action_settings">test</string>
     <string name="title_activity_read">Read</string>
+=======
+    <string name="app_name">SWDM Attendance Management System</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">test</string>
+    <string name="title_activity_read">Read</string>
+    <string name="membership">Membership</string>
+    <string name="idhint">user id</string>
+    <string name="pwhint">password</string>
+    <string name="signup">Sign Up</string>
+    <string name="signin">Sign In</string>
+    <string name="id">ID</string>
+    <string name="checkvalid">checkValid</string>
+    <string name="pw">PW</string>
+    <string name="name">Name</string>
+    <string name="phone">Phone</string>
+    <string name="confirm">Confirm</string>
+    <string name="scannfc">Please Scan NFC Tag on you seat</string>
+    <string name="textview">Textview</string>
+    <string name="imageviewlogo">Logo</string>
+    <string name="imageviewarrow">Arrow</string>
+>>>>>>> a450caae1bc423f10a32daf162dfc56f0c98f2da
 
 </resources>

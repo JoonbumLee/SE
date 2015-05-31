@@ -1,7 +1,7 @@
 package com.example.android_getphonestate;
 
 import java.util.ArrayList;
-
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -15,6 +15,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+<<<<<<< HEAD
+=======
+@SuppressLint("Registered")
+>>>>>>> a450caae1bc423f10a32daf162dfc56f0c98f2da
 public class ProAttendenceMenu extends Activity {
 
 	Button btn1, btn2;
@@ -35,7 +39,11 @@ public class ProAttendenceMenu extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_proattendencemenu);
+<<<<<<< HEAD
 		// 占쎈뼄占쎌젫嚥≪뮆�뮉 揶쏅벡�벥�뵳�딅뮞占쎈뱜�몴占� Login 占쎈만占쎈뼒�뜮袁る뼒占쎈퓠占쎄퐣 占쎌읈占쎈뼎 獄쏆룇釉섓옙苑� 占쎈ご占쎌겱 占쎈퉸 餓μ꼷鍮� 占쎈맙
+=======
+		
+>>>>>>> a450caae1bc423f10a32daf162dfc56f0c98f2da
 		Intent myIntent = getIntent();
 		Bundle myBundle = myIntent.getExtras();
 		course_name_list = myBundle.getStringArrayList("course_name_list");
@@ -66,7 +74,11 @@ public class ProAttendenceMenu extends Activity {
 					int position, long id) {
 				// TODO Auto-generated method stub
 				Position = position;
+<<<<<<< HEAD
 				course_id = course_id_list.get(position).toString();
+=======
+
+>>>>>>> a450caae1bc423f10a32daf162dfc56f0c98f2da
 				changeFragment();
 
 			}

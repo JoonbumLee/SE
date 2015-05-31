@@ -1,8 +1,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@drawable/back"
     android:id = "@+id/pLayout"
+=======
+    android:id="@+id/pLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/back"
+>>>>>>> a450caae1bc423f10a32daf162dfc56f0c98f2da
     android:orientation="vertical" >
 
     <ListView

@@ -1,0 +1,22 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+<<<<<<< HEAD
+    <!--
+    <TextView
+        android:id="@+id/course"
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content"
+        android:textSize="10dp"
+        />
+        -->
+=======
+>>>>>>> a450caae1bc423f10a32daf162dfc56f0c98f2da
+
+    <ListView
+        android:id="@+id/myAttendList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

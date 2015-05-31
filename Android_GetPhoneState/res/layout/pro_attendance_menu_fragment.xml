@@ -2,6 +2,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
+<<<<<<< HEAD
     <!--
     <TextView
         android:id="@+id/course"
@@ -10,6 +11,8 @@
         android:textSize="10dp"
         />
         -->
+=======
+>>>>>>> a450caae1bc423f10a32daf162dfc56f0c98f2da
 
     <ListView
         android:id="@+id/myAttendList"

@@ -1,0 +1,21 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/Layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+<<<<<<< HEAD
+    android:orientation="vertical"
+    android:background="@drawable/back"
+    android:id="@+id/Layout">
+
+
+=======
+    android:background="@drawable/back"
+    android:orientation="vertical" >
+
+>>>>>>> a450caae1bc423f10a32daf162dfc56f0c98f2da
+    <ListView
+        android:id="@+id/myList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

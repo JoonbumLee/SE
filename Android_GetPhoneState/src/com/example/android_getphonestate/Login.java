@@ -2,7 +2,6 @@ package com.example.android_getphonestate;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
@@ -14,7 +13,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.util.EntityUtils;
-
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -26,6 +25,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+@SuppressLint("Registered")
 public class Login extends Activity implements OnClickListener {
 	Button btn1, btn2;
 	EditText ID, PW;
@@ -34,8 +34,6 @@ public class Login extends Activity implements OnClickListener {
 	ArrayList<String> course_id_list;
 	ArrayList<String> course_time_list;
 
-
-	public final static int THEME_MATERIAL_LIGHT = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -141,7 +139,10 @@ public class Login extends Activity implements OnClickListener {
             
         }
 
+<<<<<<< HEAD
 		// 占쎈뼄占쎌젫 占쎌읈占쎈꽊占쎈릭占쎈뮉 �겫占썽겫占�
+=======
+>>>>>>> a450caae1bc423f10a32daf162dfc56f0c98f2da
 		public void checkDB() {
 			ArrayList<String> Typed = new ArrayList<String>();
 
@@ -155,15 +156,23 @@ public class Login extends Activity implements OnClickListener {
 			post.add(new BasicNameValuePair("ID", Typed.get(0).toString()));
 			post.add(new BasicNameValuePair("PW", Typed.get(1).toString()));
 
+<<<<<<< HEAD
 			// 占쎈염野껓옙 HttpClient 揶쏆빘猿� 占쎄문占쎄쉐
 			HttpClient client = new DefaultHttpClient();
 
 			// 揶쏆빘猿� 占쎈염野껓옙 占쎄퐬占쎌젟 �겫占썽겫占�, 占쎈염野껓옙 筌ㅼ뮆占쏙옙�뻻揶쏉옙 占쎈쾻占쎈쾻
+=======
+			HttpClient client = new DefaultHttpClient();
+
+>>>>>>> a450caae1bc423f10a32daf162dfc56f0c98f2da
 			HttpParams params = client.getParams();
 			HttpConnectionParams.setConnectionTimeout(params, 5000);
 			HttpConnectionParams.setSoTimeout(params, 5000);
 
+<<<<<<< HEAD
 			// Post揶쏆빘猿� 占쎄문占쎄쉐
+=======
+>>>>>>> a450caae1bc423f10a32daf162dfc56f0c98f2da
 			HttpPost httpPost = new HttpPost("http://jdrive.synology.me"
 					+ "/checkLogin.php?");
 			check = null;

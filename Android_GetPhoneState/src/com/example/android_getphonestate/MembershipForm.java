@@ -2,7 +2,10 @@ package com.example.android_getphonestate;
 
 import java.io.IOException;
 import java.util.ArrayList;
+<<<<<<< HEAD
 
+=======
+>>>>>>> a450caae1bc423f10a32daf162dfc56f0c98f2da
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
@@ -14,7 +17,11 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.util.EntityUtils;
+<<<<<<< HEAD
 
+=======
+import android.annotation.SuppressLint;
+>>>>>>> a450caae1bc423f10a32daf162dfc56f0c98f2da
 import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -29,10 +36,18 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+<<<<<<< HEAD
 
 public class MembershipForm extends Activity implements OnClickListener,
 		TextWatcher {
 
+=======
+
+@SuppressLint("Registered")
+public class MembershipForm extends Activity implements OnClickListener,
+		TextWatcher {
+
+>>>>>>> a450caae1bc423f10a32daf162dfc56f0c98f2da
 	EditText id, pw, phone, name;
 	Button check, confirm;
 	String checkID = "";
@@ -51,8 +66,11 @@ public class MembershipForm extends Activity implements OnClickListener,
 		check = (Button) findViewById(R.id.valid);
 		confirm.setOnClickListener(this);
 		check.setOnClickListener(this);
+<<<<<<< HEAD
 		
 		id.addTextChangedListener(this);
+=======
+>>>>>>> a450caae1bc423f10a32daf162dfc56f0c98f2da
 	}
 
 	@Override
@@ -137,21 +155,36 @@ public class MembershipForm extends Activity implements OnClickListener,
 			}
 		}
 
+<<<<<<< HEAD
 		// 占쎈뼄占쎌젫 占쎌읈占쎈꽊占쎈릭占쎈뮉 �겫占썽겫占�
+=======
+		// �뜝�럥堉꾢뜝�럩�젷 �뜝�럩�쓧�뜝�럥苑듿뜝�럥由��뜝�럥裕� 占쎄껀�뜝�띂寃ュ뜝占�
+>>>>>>> a450caae1bc423f10a32daf162dfc56f0c98f2da
 		public void checkDB() {
 
 			ArrayList<NameValuePair> post = new ArrayList<NameValuePair>();
 			post.add(new BasicNameValuePair("U_ID", id.getText().toString()));
 
+<<<<<<< HEAD
 			// 占쎈염野껓옙 HttpClient 揶쏆빘猿� 占쎄문占쎄쉐
 			HttpClient client = new DefaultHttpClient();
 
 			// 揶쏆빘猿� 占쎈염野껓옙 占쎄퐬占쎌젟 �겫占썽겫占�, 占쎈염野껓옙 筌ㅼ뮆占쏙옙�뻻揶쏉옙 占쎈쾻占쎈쾻
+=======
+			// �뜝�럥�뿼�뇦猿볦삕 HttpClient �뤆�룇鍮섊뙼占� �뜝�럡臾멨뜝�럡�뎽
+			HttpClient client = new DefaultHttpClient();
+
+			// �뤆�룇鍮섊뙼占� �뜝�럥�뿼�뇦猿볦삕 �뜝�럡�맟�뜝�럩�젧 占쎄껀�뜝�띂寃ュ뜝占�, �뜝�럥�뿼�뇦猿볦삕 嶺뚣끉裕녶뜝�룞�삕占쎈뻣�뤆�룊�삕 �뜝�럥苡삣뜝�럥苡�
+>>>>>>> a450caae1bc423f10a32daf162dfc56f0c98f2da
 			HttpParams params = client.getParams();
 			HttpConnectionParams.setConnectionTimeout(params, 5000);
 			HttpConnectionParams.setSoTimeout(params, 5000);
 
+<<<<<<< HEAD
 			// Post揶쏆빘猿� 占쎄문占쎄쉐
+=======
+			// Post�뤆�룇鍮섊뙼占� �뜝�럡臾멨뜝�럡�뎽
+>>>>>>> a450caae1bc423f10a32daf162dfc56f0c98f2da
 			HttpPost httpPost = new HttpPost("http://jdrive.synology.me"
 					+ "/checkId.php?");
 			try {
@@ -183,8 +216,11 @@ public class MembershipForm extends Activity implements OnClickListener,
 	@Override
 	public void onTextChanged(CharSequence s, int start, int before, int count) {
 		// TODO Auto-generated method stub
+<<<<<<< HEAD
 		Log.d(getClass().getName(),"in onTextChanged");
 		
+=======
+>>>>>>> a450caae1bc423f10a32daf162dfc56f0c98f2da
 		if (getCurrentFocus().getId() == R.id.id)
 		{
 			Log.d("nowChanged","nowChanged");

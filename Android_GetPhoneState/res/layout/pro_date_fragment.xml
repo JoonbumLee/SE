@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dateLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     android:orientation="vertical"
     android:id="@+id/dateLayout">
+=======
+    android:orientation="vertical" >
+>>>>>>> a450caae1bc423f10a32daf162dfc56f0c98f2da
 
     <ListView
         android:id="@+id/dateList"
