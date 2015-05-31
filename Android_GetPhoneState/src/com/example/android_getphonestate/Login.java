@@ -2,7 +2,6 @@ package com.example.android_getphonestate;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
@@ -14,7 +13,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.util.EntityUtils;
-
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -26,6 +25,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+@SuppressLint("Registered")
 public class Login extends Activity implements OnClickListener {
 	Button btn1, btn2;
 	EditText ID, PW;
@@ -33,8 +33,6 @@ public class Login extends Activity implements OnClickListener {
 	ArrayList<String> course_name_list;
 	ArrayList<String> course_id_list;
 	ArrayList<String> course_time_list;
-
-	public final static int THEME_MATERIAL_LIGHT = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +70,9 @@ public class Login extends Activity implements OnClickListener {
 			// Log.d(getClass().getName(), check);
 			// Log.d("onClcik", "" + 4);
 
+		} else {
+			Intent tarIntent = new Intent(this, MembershipForm.class);
+			startActivity(tarIntent);
 		}
 
 	}
@@ -97,45 +98,46 @@ public class Login extends Activity implements OnClickListener {
 		}
 
 		@Override
-		protected void onPostExecute(Void result) {
-			// TODO Auto-generated method stub
-			super.onPostExecute(result);
+        protected void onPostExecute(Void result) {
+            // TODO Auto-generated method stub
+            super.onPostExecute(result);
 
-			// Log.d("5", check);
-			if (check.equalsIgnoreCase("true")) {
-				if (id.startsWith("1")) {
-					Bundle myBundle = new Bundle();
-					myBundle.putStringArrayList("course_name_list", course_name_list);
-					myBundle.putStringArrayList("course_id_list", course_id_list);
-					myBundle.putStringArrayList("course_time_list", course_time_list);
-					myBundle.putString("userId",id);
-					Intent myIntent = new Intent(Login.this,
-							ProAttendenceMenu.class);
-					myIntent.putExtras(myBundle);
-					startActivity(myIntent);
-				} else {
-					Intent myIntent = new Intent(Login.this,
-							AttendenceMenu.class);
-					Bundle myBundle = new Bundle();
-					myBundle.putStringArrayList("course_name_list", course_name_list);
-					myBundle.putStringArrayList("course_id_list", course_id_list);
-					myBundle.putStringArrayList("course_time_list", course_time_list);
-					myBundle.putString("userId",id);
-					myIntent.putExtras(myBundle);
-					startActivity(myIntent);
-				}
-			}
+            // Log.d("5", check);
+            
+            if (check.equalsIgnoreCase("true")) {
+                if (id.startsWith("1")) {
+                    Bundle myBundle = new Bundle();
+                    myBundle.putStringArrayList("course_name_list", course_name_list);
+                    myBundle.putStringArrayList("course_id_list", course_id_list);
+                    myBundle.putStringArrayList("course_time_list", course_time_list);
+                    myBundle.putString("userId",id);
+                    Intent myIntent = new Intent(Login.this,
+                            ProAttendenceMenu.class);
+                    myIntent.putExtras(myBundle);
+                    startActivity(myIntent);
+                } else {
+                    Intent myIntent = new Intent(Login.this,
+                            AttendenceMenu.class);
+                    Bundle myBundle = new Bundle();
+                    myBundle.putStringArrayList("course_name_list", course_name_list);
+                    myBundle.putStringArrayList("course_id_list", course_id_list);
+                    myBundle.putStringArrayList("course_time_list", course_time_list);
+                    myBundle.putString("userId",id);
+                    myIntent.putExtras(myBundle);
+                    startActivity(myIntent);
+                }
+            }
 
-			else {
-				ID.setText("");
-				PW.setText("");
-				Toast.makeText(getApplication(), "Invalid, tpye again!",
-						Toast.LENGTH_SHORT).show();
+            else {
+                ID.setText("");
+                PW.setText("");
+                Toast.makeText(getApplication(), "Invalid, tpye again!",
+                        Toast.LENGTH_SHORT).show();
 
-			}
-		}
+            }
+            
+        }
 
-		// 실제 전송하는 부분
 		public void checkDB() {
 			ArrayList<String> Typed = new ArrayList<String>();
 
@@ -149,15 +151,12 @@ public class Login extends Activity implements OnClickListener {
 			post.add(new BasicNameValuePair("ID", Typed.get(0).toString()));
 			post.add(new BasicNameValuePair("PW", Typed.get(1).toString()));
 
-			// 연결 HttpClient 객체 생성
 			HttpClient client = new DefaultHttpClient();
 
-			// 객체 연결 설정 부분, 연결 최대시간 등등
 			HttpParams params = client.getParams();
 			HttpConnectionParams.setConnectionTimeout(params, 5000);
 			HttpConnectionParams.setSoTimeout(params, 5000);
 
-			// Post객체 생성
 			HttpPost httpPost = new HttpPost("http://jdrive.synology.me"
 					+ "/checkLogin.php?");
 			check = null;
@@ -172,11 +171,10 @@ public class Login extends Activity implements OnClickListener {
 				check = EntityUtils.toString((res.getEntity()));
 				Log.d("Reulst", check);
 				String[] split = check.split(" ");
-				
+
 				if (split[0].trim().equalsIgnoreCase("true")) {
 					check = split[0];
-					for (int j = 1; j < split.length; j++) 
-					{
+					for (int j = 1; j < split.length; j++) {
 						String[] list = split[j].split("/");
 						course_name_list.add(list[0]);
 						course_id_list.add(list[1]);

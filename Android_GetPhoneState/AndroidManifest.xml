@@ -5,8 +5,8 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="19"
-        android:targetSdkVersion="19" />
+        android:minSdkVersion="11"
+        android:targetSdkVersion="22" />
 
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -14,7 +14,7 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-
+	<uses-permission android:name="android.permission.NFC" />
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -29,15 +29,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Attend"
-            android:label="Attend" >
-            <intent-filter>
-                <action android:name="android.intent.action.attend" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
+        
         <activity
             android:name=".AttendenceMenu"
             android:label="AttendenceMenu" >
@@ -56,15 +48,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".showAttendence"
-            android:label="showAttendence" >
-            <intent-filter>
-                <action android:name="android.intent.action.showattendence" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
+       
         <activity
             android:name=".Login"
             android:label="login" >
@@ -74,15 +58,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ProAllAttend"
-            android:label="Professor All Attend" >
-            <intent-filter>
-                <action android:name="android.intent.action.proallattend" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
+       
         <activity
             android:name=".ProAttendenceMenu"
             android:label="Professor Attendence Menu" >
@@ -92,16 +68,11 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ProOneAttend"
-            android:label="Professor One Attend" >
-            <intent-filter>
-                <action android:name="android.intent.action.prooneattend" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
         
+        <activity
+            android:name=".Read"
+            android:label="@string/title_activity_read" >
+        </activity>
     </application>
 
 </manifest>
