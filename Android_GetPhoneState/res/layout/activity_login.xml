@@ -1,108 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="?pageBackground"
+
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/back"
-    android:orientation="vertical"
-    android:stretchColumns="*" >
+    android:layout_height="match_parent">
 
-    <TableRow>
+    <TextView
+        android:id="@+id/tvSelectTheme"
+        style="?textLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SWDM Attendance Management System" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_span="6"
-            android:paddingBottom="10dp"
-            android:paddingLeft="35dp"
-            android:paddingTop="70dp"
-            android:text="Attendance Management System"
-            android:textSize="30sp"
-            android:textStyle="bold|italic" />
-    </TableRow>
 
-    <TableRow>
+
+    <RelativeLayout
+        android:id="@+id/credential"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="?whiteBackground"
+        android:layout_below="@+id/tvSelectTheme"
+        >
 
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/tvCredentials"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_span="6"
-            android:paddingBottom="10dp"
-            android:paddingLeft="35dp"
-            android:paddingTop="10dp"
-            android:text="ID : "
-            android:textSize="25sp"
-            android:textStyle="italic|bold" />
-
-    </TableRow>
-
-    <TableRow>
+            style="?textSubheader"
+            android:text="Membership" />
 
         <EditText
             android:id="@+id/id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="35dp"
-            android:layout_marginRight="35dp"
-            android:layout_span="6"
-            android:background="@drawable/edit_text"
-            android:paddingTop="10dp" />
-
-    </TableRow>
-
-    <TableRow>
-
-        <TextView
+            style="?textRegular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="10dp"
-            android:paddingLeft="35dp"
-            android:paddingTop="10dp"
-            android:text="PW : "
-            android:textSize="22sp"
-            android:textStyle="italic|bold" />
-
-    </TableRow>
-
-    <TableRow>
+            android:layout_below="@+id/tvCredentials"
+            android:inputType="text"
+            android:hint="user id"
+            android:lines="1"
+            />
 
         <EditText
             android:id="@+id/pw"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="35dp"
-            android:layout_marginRight="35dp"
-            android:layout_span="6"
-            android:background="@drawable/edit_text"
-            android:digits="0123456789"
-            android:inputType="number"
-            android:paddingTop="10dp"
-            android:password="true" />
+            android:layout_below="@+id/id"
+            android:layout_marginTop="@dimen/edittext_margin_top"
+            android:hint="password"
+            android:inputType="textPassword"
+            android:lines="1" />
+    </RelativeLayout>
 
-    </TableRow>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/credential"
 
-    <TableRow>
+    android:layout_alignParentBottom="true"
+    android:layout_centerHorizontal="true">
 
-        <Button
-            android:id="@+id/membership"
-            style="@style/btnStyleBeige"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="35dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginRight="57dp"
-            android:paddingTop="20dp"
-            android:text="Membership" />
+    <Button
+        android:id="@+id/membership"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:padding="10dp"
+        android:layout_margin="4dp"
+        android:text="Sign Up"
+        style="?button"
+        />
 
         <Button
             android:id="@+id/confirm"
-            style="@style/btnStyleBeige"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_span="4"
-            android:paddingTop="20dp"
-            android:text="Confirm" />
-
-    </TableRow>
-
-</TableLayout>
+            android:layout_below="@+id/membership"
+            android:padding="10dp"
+            android:layout_margin="4dp"
+            android:text="Sign In"
+            style="?button"
+            />
+</RelativeLayout>
+</RelativeLayout>

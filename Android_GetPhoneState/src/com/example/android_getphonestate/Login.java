@@ -33,11 +33,13 @@ public class Login extends Activity implements OnClickListener {
 	ArrayList<String> course_name_list;
 	ArrayList<String> course_id_list;
 	ArrayList<String> course_time_list;
-	private boolean debug = true;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
+		this.setTheme(R.style.Theme_Material_Light);
+
 		setContentView(R.layout.activity_login);
 		btn1 = (Button) findViewById(R.id.membership);
 		btn2 = (Button) findViewById(R.id.confirm);
