@@ -61,6 +61,8 @@ public class Read extends Activity {
 
     public static final int TYPE_TEXT = 1;
     public static final int TYPE_URI = 2;
+    
+    private boolean succese = false;
 
     long now;
 
@@ -248,7 +250,7 @@ public class Read extends Activity {
             }
 
 
-            //TODO �떆媛� �씫湲� 留뚯빟�뿉 NFC �깭洹멸� �씫�엺 �떆媛꾩쓣 湲곗��쑝濡� �븳�떎硫�
+            //TODO 占쎈뻻揶쏉옙 占쎌뵭疫뀐옙 筌띾슣鍮잞옙肉� NFC 占쎄묶域밸㈇占� 占쎌뵭占쎌뿺 占쎈뻻揶쏄쑴�뱽 疫꿸퀣占쏙옙�몵嚥∽옙 占쎈립占쎈뼄筌롳옙
             /*
             now = System.currentTimeMillis();
             Date n_date = new Date(now);
@@ -258,7 +260,9 @@ public class Read extends Activity {
             time = strDate.substring(strDate.indexOf(' ')+1);
             */
 
-            new TryAttend().execute();
+            if(!succese){
+            	new TryAttend().execute();
+            }
             readResult.append(recordStr + "\n" +"Time:"+time+"\nDate:"+date); // append read text value to TextView
         }
 
@@ -303,7 +307,7 @@ public class Read extends Activity {
             }
         }
 
-        // �떎�젣 �쟾�넚�븯�뒗 遺�遺�
+        // 占쎈뼄占쎌젫 占쎌읈占쎈꽊占쎈릭占쎈뮉 �겫占썽겫占�
         public void checkDB() {
             ArrayList<String> Typed = new ArrayList<String>();
 
@@ -322,15 +326,15 @@ public class Read extends Activity {
             post.add(new BasicNameValuePair("C_ID", Typed.get(1).toString()));
             post.add(new BasicNameValuePair("DATE", Typed.get(2).toString()));
 
-            // �뿰寃� HttpClient 媛앹껜 �깮�꽦
+            // 占쎈염野껓옙 HttpClient 揶쏆빘猿� 占쎄문占쎄쉐
             HttpClient client = new DefaultHttpClient();
 
-            // 媛앹껜 �뿰寃� �꽕�젙 遺�遺�, �뿰寃� 理쒕��떆媛� �벑�벑
+            // 揶쏆빘猿� 占쎈염野껓옙 占쎄퐬占쎌젟 �겫占썽겫占�, 占쎈염野껓옙 筌ㅼ뮆占쏙옙�뻻揶쏉옙 占쎈쾻占쎈쾻
             HttpParams params = client.getParams();
             HttpConnectionParams.setConnectionTimeout(params, 5000);
             HttpConnectionParams.setSoTimeout(params, 5000);
 
-            // Post媛앹껜 �깮�꽦
+            // Post揶쏆빘猿� 占쎄문占쎄쉐
             HttpPost httpPost = new HttpPost("http://jdrive.synology.me"
                     + "/Attend.php?");
             check = null;
@@ -347,6 +351,7 @@ public class Read extends Activity {
                 if(check.trim().equalsIgnoreCase("true")){
 
                    // Toast.makeText(getApplicationContext(), "Attend success\n check course information if you want ", Toast.LENGTH_LONG).show();
+                	succese=true;
                     finish();
                 }
                 else{
