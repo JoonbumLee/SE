@@ -17,8 +17,7 @@ import com.google.common.base.Charsets;
 import com.google.common.primitives.Bytes;
 import com.example.android_getphonestate.*;
 
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
+
 import android.support.v4.app.Fragment;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -72,7 +71,7 @@ import java.text.SimpleDateFormat;
 
 public class AttendenceMenu extends Activity implements OnClickListener {
 
-    static final boolean DEBUG_MODE = true;// 諛쒗몴�븣 蹂��닔�쓽 �뵒�뤃�듃 媛믪쓣 �쐞�븳 紐⑤뱶
+    static final boolean DEBUG_MODE = true;// 獄쏆뮉紐댐옙釉� 癰귨옙占쎈땾占쎌벥 占쎈탵占쎈쨨占쎈뱜 揶쏅�れ뱽 占쎌맄占쎈립 筌뤴뫀諭�
 
     ListViewCustomAdapter adapter; // customized adapter for UI
     ArrayList<String> course_name_list;
