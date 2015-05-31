@@ -73,6 +73,7 @@ public class ReadActivity extends ActionBarActivity {
     private PendingIntent mPendingIntent;
     private IntentFilter[] mFilters;
     private String[][] mTechLists;
+    private boolean success =false;
 
     private String s_id, time, date, cour_id, check = "false", course_list = "";
 

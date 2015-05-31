@@ -34,6 +34,9 @@ public class Login extends Activity implements OnClickListener {
 	ArrayList<String> course_id_list;
 	ArrayList<String> course_time_list;
 
+
+	public final static int THEME_MATERIAL_LIGHT = 0;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -138,7 +141,7 @@ public class Login extends Activity implements OnClickListener {
             
         }
 
-		// �떎�젣 �쟾�넚�븯�뒗 遺�遺�
+		// 占쎈뼄占쎌젫 占쎌읈占쎈꽊占쎈릭占쎈뮉 �겫占썽겫占�
 		public void checkDB() {
 			ArrayList<String> Typed = new ArrayList<String>();
 
@@ -152,15 +155,15 @@ public class Login extends Activity implements OnClickListener {
 			post.add(new BasicNameValuePair("ID", Typed.get(0).toString()));
 			post.add(new BasicNameValuePair("PW", Typed.get(1).toString()));
 
-			// �뿰寃� HttpClient 媛앹껜 �깮�꽦
+			// 占쎈염野껓옙 HttpClient 揶쏆빘猿� 占쎄문占쎄쉐
 			HttpClient client = new DefaultHttpClient();
 
-			// 媛앹껜 �뿰寃� �꽕�젙 遺�遺�, �뿰寃� 理쒕��떆媛� �벑�벑
+			// 揶쏆빘猿� 占쎈염野껓옙 占쎄퐬占쎌젟 �겫占썽겫占�, 占쎈염野껓옙 筌ㅼ뮆占쏙옙�뻻揶쏉옙 占쎈쾻占쎈쾻
 			HttpParams params = client.getParams();
 			HttpConnectionParams.setConnectionTimeout(params, 5000);
 			HttpConnectionParams.setSoTimeout(params, 5000);
 
-			// Post媛앹껜 �깮�꽦
+			// Post揶쏆빘猿� 占쎄문占쎄쉐
 			HttpPost httpPost = new HttpPost("http://jdrive.synology.me"
 					+ "/checkLogin.php?");
 			check = null;

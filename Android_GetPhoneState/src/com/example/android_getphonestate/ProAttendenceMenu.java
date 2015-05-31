@@ -26,7 +26,7 @@ public class ProAttendenceMenu extends Activity {
 	FragmentTransaction fragmentTransaction;
 	ProMenuFragment frag1;
 	ProDateFragment frag2;
-	String user_id;
+	String user_id,course_id;
 	ArrayList<String> course_name_list;
 	ArrayList<String> course_id_list;
 	ArrayList<String> course_time_list;
@@ -35,7 +35,7 @@ public class ProAttendenceMenu extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_proattendencemenu);
-		// �떎�젣濡쒕뒗 媛뺤쓽由ъ뒪�듃瑜� Login �븸�떚鍮꾪떚�뿉�꽌 �쟾�떖 諛쏆븘�꽌 �몴�쁽 �빐 以섏빞 �븿
+		// 占쎈뼄占쎌젫嚥≪뮆�뮉 揶쏅벡�벥�뵳�딅뮞占쎈뱜�몴占� Login 占쎈만占쎈뼒�뜮袁る뼒占쎈퓠占쎄퐣 占쎌읈占쎈뼎 獄쏆룇釉섓옙苑� 占쎈ご占쎌겱 占쎈퉸 餓μ꼷鍮� 占쎈맙
 		Intent myIntent = getIntent();
 		Bundle myBundle = myIntent.getExtras();
 		course_name_list = myBundle.getStringArrayList("course_name_list");
@@ -66,7 +66,7 @@ public class ProAttendenceMenu extends Activity {
 					int position, long id) {
 				// TODO Auto-generated method stub
 				Position = position;
-
+				course_id = course_id_list.get(position).toString();
 				changeFragment();
 
 			}
