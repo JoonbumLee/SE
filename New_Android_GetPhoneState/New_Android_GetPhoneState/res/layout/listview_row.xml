@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relativeLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/listview_background"
+    android:padding="5dip" >
+
+    <ImageView
+        android:id="@+id/imgViewLogo"
+        android:layout_width="50dip"
+        android:layout_height="50dip"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/gachon"
+        android:scaleType="fitXY" >
+    </ImageView>
+
+    <TextView
+        android:id="@+id/txtViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dip"
+        android:layout_toRightOf="@+id/imgViewLogo"
+        android:text="TextView"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#43c6db"
+        android:textStyle="bold" >
+    </TextView>
+    <TextView
+        android:id="@+id/txtViewDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtViewTitle"
+        android:layout_marginLeft="2dip"
+        android:layout_toRightOf="@+id/imgViewLogo"
+        android:text="TextView"
+        android:textColor="#000000"
+        android:textStyle="bold" >
+    </TextView>
+
+    <ImageView
+        android:id="@+id/imgViewArrow"
+        android:layout_width="35dip"
+        android:layout_height="35dip"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="3dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/arrow">
+    </ImageView>
+
+</RelativeLayout>
