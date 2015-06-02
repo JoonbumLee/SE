@@ -36,7 +36,7 @@ public class Login extends Activity implements OnClickListener {
 
 
 	public final static int THEME_MATERIAL_LIGHT = 0;
-
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -62,6 +62,9 @@ public class Login extends Activity implements OnClickListener {
 		course_name_list.clear();
 		course_id_list.clear();
 		course_time_list.clear();
+		ID.setText("");
+		PW.setText("");
+		ID.requestFocus();
 	}
 
 	public void onClick(View v) {
