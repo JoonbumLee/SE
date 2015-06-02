@@ -1,3 +1,4 @@
+
 package com.example.android_getphonestate;
 
 import java.io.IOException;
@@ -352,6 +353,7 @@ public class ProMenuFragment extends Fragment {
 		public void DeleteDB() {
 			ArrayList<NameValuePair> post = new ArrayList<NameValuePair>();
 			post.add(new BasicNameValuePair("Date", Date));
+			post.add(new BasicNameValuePair("C_ID", ((ProAttendenceMenu)getActivity()).course_id));
 			// 占쎈염野껓옙 HttpClient 揶쏆빘猿� 占쎄문占쎄쉐
 			HttpClient client = new DefaultHttpClient();
 
