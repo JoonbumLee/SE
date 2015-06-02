@@ -309,6 +309,7 @@ public class ProMenuFragment extends Fragment {
 			post.add(new BasicNameValuePair("C_ID",
 					((ProAttendenceMenu) getActivity()).course_id_list.get(
 							position).toString()));
+			
 			Log.d("user_id,course_id",userID + " " + ((ProAttendenceMenu) getActivity())
 					.course_id_list.get(position).toString());
 			// 占쎈염野껓옙 HttpClient 揶쏆빘猿� 占쎄문占쎄쉐
@@ -332,7 +333,7 @@ public class ProMenuFragment extends Fragment {
 				HttpResponse res = client.execute(httpPost);
 				check = EntityUtils.toString((res.getEntity()));
 				Log.d("Reulst", check);
-				String[] split = check.split(" ");
+				String[] split = check.split("/");
 				Log.d("before if", split[0]);
 				myAttend = new ArrayList<String>();
 				if (!(split[0].trim().equalsIgnoreCase("noData"))) {
@@ -354,6 +355,9 @@ public class ProMenuFragment extends Fragment {
 			ArrayList<NameValuePair> post = new ArrayList<NameValuePair>();
 			post.add(new BasicNameValuePair("Date", Date));
 			post.add(new BasicNameValuePair("C_ID", ((ProAttendenceMenu)getActivity()).course_id));
+			post.add(new BasicNameValuePair("time",
+					((ProAttendenceMenu)getActivity()).course_time_list.get(
+							position).toString()));
 			// 占쎈염野껓옙 HttpClient 揶쏆빘猿� 占쎄문占쎄쉐
 			HttpClient client = new DefaultHttpClient();
 
