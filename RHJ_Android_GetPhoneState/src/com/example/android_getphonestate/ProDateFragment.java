@@ -39,8 +39,9 @@ public class ProDateFragment extends Fragment {
 	String userID = "", date = "";
 	ListView AttendList;
 	ArrayList<String> StAttend;
-	ArrayAdapter<String> adapter3;
+	ListViewCustomAdapter adapter3;
 	LinearLayout activityList;
+	ArrayList<String> blank;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,7 +62,7 @@ public class ProDateFragment extends Fragment {
 		date = ((ProAttendenceMenu) getActivity()).Date;
 		position = ((ProAttendenceMenu) getActivity()).Position;
 		userID = ((ProAttendenceMenu) getActivity()).user_id;
-
+		blank = new ArrayList<String>();
 		StAttend = new ArrayList<String>();
 		
 		AttendList = (ListView) getActivity().findViewById(R.id.dateList);
@@ -116,8 +117,7 @@ public class ProDateFragment extends Fragment {
 				Log.d("attend", attend);
 			}
 
-			adapter3 = new ArrayAdapter<String>(getActivity(),
-					android.R.layout.simple_list_item_1, StAttend);
+			adapter3 =  new ListViewCustomAdapter(getActivity(),blank,StAttend);
 			// if(attendList == null)
 			// Log.d("list","null");
 			// if(adapter2 == null)
@@ -168,12 +168,18 @@ public class ProDateFragment extends Fragment {
 					for (int j = 1; j < split.length; j++) {
 						String[] txt = split[j].split("/");
 						if (!(txt[2].startsWith("1")))
+						{
 							StAttend.add("Date : " + txt[0] + " Name : "
 									+ txt[1] + " U_Id : " + txt[2]
 									+ " Point : " + txt[3]);
+							blank.add(" ");
+						}
 					}
-				} else
+				} else {
+					blank.add(" ");
 					StAttend.add("noData");
+				}
+					
 
 			} catch (ClientProtocolException e) {
 				e.printStackTrace();

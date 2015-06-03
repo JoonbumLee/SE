@@ -18,7 +18,7 @@ import android.widget.ListView;
 public class ProAttendenceMenu extends Activity {
 
 	Button btn1, btn2;
-	ArrayAdapter<String> adapter;
+	ListViewCustomAdapter adapter;
 	ListView list;
 	String Date;
 	int Position = 0;
@@ -55,8 +55,7 @@ public class ProAttendenceMenu extends Activity {
 		// Log.d("courseList",courseList.get(i).toString());
 		// }
 
-		adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, course_name_list);
+		adapter = new ListViewCustomAdapter(this,course_name_list,course_id_list);
 		list = (ListView) findViewById(R.id.ProList);
 		list.setAdapter(adapter);
 

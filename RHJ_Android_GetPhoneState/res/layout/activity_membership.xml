@@ -1,82 +1,86 @@
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="?pageBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back"
-    android:stretchColumns="*" >
+    android:background="@drawable/light_gray"
+    android:orientation="vertical" >
 
-    <TableRow
+    <TextView
+        style="?textLarge"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Membership" />
+
+    <LinearLayout
+        style="?whiteBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvSelectTheme"
+        android:alpha="0.80"
+        android:orientation="vertical" >
+
         <TextView
-            android:layout_width = "wrap_content"
-            android:layout_height = "wrap_content"
-            android:text = "ID"/>
+            style="?textSubheader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ID" />
+
         <EditText
-            android:layout_width = "match_parent"
-            android:layout_height = "wrap_content"
             android:id="@+id/id"
-            android:layout_span = "3"/>
-        <Button
-            android:layout_width = "wrap_content"
-            android:layout_height = "wrap_content"
-            android:text ="checkValid"
-            android:id="@+id/valid"
-            />
-    </TableRow>
-    
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-        <TextView
-            android:layout_width = "wrap_content"
-            android:layout_height = "wrap_content"
-            android:text = "PW"/>
-        <EditText
-            android:layout_width = "match_parent"
-            android:layout_height = "wrap_content" />
-    </TableRow>
+            style="?textRegular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="user id"
+            android:inputType="text"
+            android:lines="1" />
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
         <TextView
-            android:layout_width = "wrap_content"
-            android:layout_height = "wrap_content"
+            style="?textSubheader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Name" />
 
-            android:text = "Name"/>
         <EditText
-            android:layout_width = "match_parent"
-            android:layout_height = "wrap_content"
             android:id="@+id/name"
-            android:layout_span = "3"/>
-    </TableRow>
+            style="?textRegular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="name"
+            android:inputType="text"
+            android:lines="1" />
 
-    <TableRow 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
         <TextView
-            android:layout_width = "wrap_content"
-            android:layout_height = "wrap_content"
-            android:text = "Phone"/>
+            style="?textSubheader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Phone" />
+
         <EditText
-            android:layout_width = "match_parent"
-            android:layout_height = "wrap_content"
             android:id="@+id/phone"
-            android:layout_span = "3"
+            style="?textRegular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:digits="0123456789"
+            android:hint="phone"
             android:inputType="number"
-            android:digits = "0123456789"/>
-    </TableRow>
+            android:lines="1" />
 
-    <TableRow>
         <Button
-            android:layout_width = "wrap_content"
-            android:layout_height = "wrap_content"
-            style="@style/btnStyleBeige"
             android:id="@+id/confirm"
-            android:text="Confirm"
-            android:layout_span = "4"/>
-    </TableRow>
+            style="?button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Confirm" />
 
+        <Button
+            android:id="@+id/check"
+            style="?button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Check" />
+    </LinearLayout>
 
-
-</TableLayout>
+</LinearLayout>

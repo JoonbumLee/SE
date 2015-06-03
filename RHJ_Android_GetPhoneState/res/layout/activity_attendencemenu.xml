@@ -2,12 +2,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/back"
+    android:background="@drawable/light_gray"
     android:id="@+id/Layout">
 
 
     <ListView
         android:id="@+id/myList"
+                android:dividerHeight="4dp" 
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

@@ -25,13 +25,13 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
 
 public class AttendanceMenuFragment extends Fragment {
 	ListView attendList;
-	ArrayAdapter<String> adapter2;
+	ListViewCustomAdapter adapter2;
 	int position = 0;
 
+	ArrayList<String> blank;
 	ArrayList<String> myAttend;
 	String userID, attend = "";
 	LinearLayout activityList;
@@ -57,7 +57,7 @@ public class AttendanceMenuFragment extends Fragment {
 		position = ((AttendenceMenu) getActivity()).Position;
 		userID = ((AttendenceMenu) getActivity()).id;
 		myAttend = new ArrayList<String>();
-
+		blank = new ArrayList<String>();
 		attendList = (ListView) getActivity().findViewById(R.id.myAttendList);
 
 		// for(String course : course_list)
@@ -108,8 +108,7 @@ public class AttendanceMenuFragment extends Fragment {
 				Log.d("attend", attend);
 			}
 
-			adapter2 = new ArrayAdapter<String>(getActivity(),
-					android.R.layout.simple_list_item_1, myAttend);
+			adapter2 =new ListViewCustomAdapter(getActivity(),blank,myAttend);
 			// if(attendList == null)
 			// Log.d("list","null");
 			// if(adapter2 == null)
@@ -123,7 +122,7 @@ public class AttendanceMenuFragment extends Fragment {
 
 		}
 
-		// �떎�젣 �쟾�넚�븯�뒗 遺�遺�
+		// 占쎈뼄占쎌젫 占쎌읈占쎈꽊占쎈릭占쎈뮉 �겫占썽겫占�
 		public void checkDB() {
 
 			ArrayList<NameValuePair> post = new ArrayList<NameValuePair>();
@@ -134,15 +133,15 @@ public class AttendanceMenuFragment extends Fragment {
 			Log.d("course_Id", ((AttendenceMenu) getActivity()).course_id_list
 					.get(position).toString());
 
-			// �뿰寃� HttpClient 媛앹껜 �깮�꽦
+			// 占쎈염野껓옙 HttpClient 揶쏆빘猿� 占쎄문占쎄쉐
 			HttpClient client = new DefaultHttpClient();
 
-			// 媛앹껜 �뿰寃� �꽕�젙 遺�遺�, �뿰寃� 理쒕��떆媛� �벑�벑
+			// 揶쏆빘猿� 占쎈염野껓옙 占쎄퐬占쎌젟 �겫占썽겫占�, 占쎈염野껓옙 筌ㅼ뮆占쏙옙�뻻揶쏉옙 占쎈쾻占쎈쾻
 			HttpParams params = client.getParams();
 			HttpConnectionParams.setConnectionTimeout(params, 5000);
 			HttpConnectionParams.setSoTimeout(params, 5000);
 
-			// Post媛앹껜 �깮�꽦
+			// Post揶쏆빘猿� 占쎄문占쎄쉐
 			HttpPost httpPost = new HttpPost("http://jdrive.synology.me"
 					+ "/checkAttendance.php?");
 			try {
@@ -166,9 +165,13 @@ public class AttendanceMenuFragment extends Fragment {
 								+ "point " + attend[1]);
 						myAttend.add("Date : " + attend[0].trim() + " "
 								+ "point : " + attend[1].trim());
+						blank.add(" ");
 					}
 				} else
+				{
 					myAttend.add("noData");
+					blank.add(" ");
+				}
 
 			} catch (ClientProtocolException e) {
 				e.printStackTrace();

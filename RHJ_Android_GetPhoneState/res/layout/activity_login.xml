@@ -1,32 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="?pageBackground"
-
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/light_gray" >
 
     <TextView
         android:id="@+id/tvSelectTheme"
         style="?textLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="SWDM Attendance Management System" />
-
-
 
     <RelativeLayout
         android:id="@+id/credential"
+        style="?whiteBackground"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="?whiteBackground"
         android:layout_below="@+id/tvSelectTheme"
-        >
+        android:alpha="0.50" >
 
         <TextView
             android:id="@+id/tvCredentials"
+            style="?textSubheader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="?textSubheader"
             android:text="Membership" />
 
         <EditText
@@ -35,10 +34,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvCredentials"
-            android:inputType="text"
             android:hint="user id"
-            android:lines="1"
-            />
+            android:inputType="text"
+            android:lines="1" />
 
         <EditText
             android:id="@+id/pw"
@@ -50,35 +48,34 @@
             android:inputType="textPassword"
             android:lines="1" />
     </RelativeLayout>
+- 
 
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_below="@+id/credential"
-
-    android:layout_alignParentBottom="true"
-    android:layout_centerHorizontal="true">
-
-    <Button
-        android:id="@+id/membership"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/credential"
+        android:layout_centerHorizontal="true"
+        android:alpha="0.50" >
 
-        android:padding="10dp"
-        android:layout_margin="4dp"
-        android:text="Sign Up"
-        style="?button"
-        />
+        <Button
+            android:id="@+id/membership"
+            style="?button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:padding="10dp"
+            android:text="Sign Up" />
 
         <Button
             android:id="@+id/confirm"
+            style="?button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/membership"
-            android:padding="10dp"
             android:layout_margin="4dp"
-            android:text="Sign In"
-            style="?button"
-            />
-</RelativeLayout>
+            android:padding="10dp"
+            android:text="Sign In" />
+    </RelativeLayout>
+
 </RelativeLayout>

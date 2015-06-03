@@ -41,6 +41,7 @@ public class MembershipForm extends Activity implements OnClickListener,
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		this.setTheme(R.style.Theme_Material_Light);
 		setContentView(R.layout.activity_membership);
 
 		id = (EditText) findViewById(R.id.id);
@@ -48,7 +49,7 @@ public class MembershipForm extends Activity implements OnClickListener,
 		phone = (EditText) findViewById(R.id.phone);
 		pw = (EditText) findViewById(R.id.pw);
 		confirm = (Button) findViewById(R.id.confirm);
-		check = (Button) findViewById(R.id.valid);
+		check = (Button) findViewById(R.id.check);
 		confirm.setOnClickListener(this);
 		check.setOnClickListener(this);
 		

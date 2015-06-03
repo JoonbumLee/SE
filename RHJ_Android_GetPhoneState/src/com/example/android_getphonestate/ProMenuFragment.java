@@ -42,7 +42,8 @@ import android.widget.Toast;
 
 public class ProMenuFragment extends Fragment {
 	ListView dateList;
-	ArrayAdapter<String> adapter3;
+	ListViewCustomAdapter adapter3;
+	ArrayList<String> blank;
 	int position = 0;
 	ArrayList<String> course_list;
 	ArrayList<String> myAttend;
@@ -155,7 +156,7 @@ public class ProMenuFragment extends Fragment {
 		position = ((ProAttendenceMenu) getActivity()).Position;
 		userID = ((ProAttendenceMenu) getActivity()).user_id;
 		myAttend = new ArrayList<String>();
-
+		blank = new ArrayList<String>();
 		GregorianCalendar calendar = new GregorianCalendar();
 		year = calendar.get(Calendar.YEAR);
 		month = calendar.get(Calendar.MONTH);
@@ -285,8 +286,7 @@ public class ProMenuFragment extends Fragment {
 				Log.d("attend", attend);
 			}
 
-			adapter3 = new ArrayAdapter<String>(getActivity(),
-					android.R.layout.simple_list_item_1, myAttend);
+			adapter3 = new ListViewCustomAdapter(getActivity(),blank,myAttend);
 			// if(attendList == null)
 			// Log.d("list","null");
 			// if(adapter2 == null)
@@ -340,9 +340,12 @@ public class ProMenuFragment extends Fragment {
 
 					for (int j = 1; j < split.length; j++) {
 						myAttend.add(split[j]);
+						blank.add(" ");
 					}
-				} else
+				} else {
+					blank.add(" ");
 					myAttend.add("noData");
+				}
 
 			} catch (ClientProtocolException e) {
 				e.printStackTrace();

@@ -40,7 +40,7 @@ public class Login extends Activity implements OnClickListener {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+		
 		this.setTheme(R.style.Theme_Material_Light);
 
 		setContentView(R.layout.activity_login);
